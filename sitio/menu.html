@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+	  <meta charset="UTF-8">
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery.js" />
+	<script type="text/javascript" src="js/bootstrap.js" />
+	<link href="css/addons/datatables.min.css" rel="stylesheet">
+	<!-- MDBootstrap Datatables  -->
+<script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+	<title>Renacer del Campo</title>
+</head>
+<style type="text/css">
+	table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}
+body{
+	/*background: url("img/onigiri.gif");*/
+	/*background-size: cover;*/
+}
+.head{
+	text-align: center;
+	font-family: monospace;
+	background-color: #fafafa;
+}
+.products{
+	background-color: whitesmoke;
+}
+.searcharea{
+	color: white;
+    background-color: #a0b18b;
+}
+.logo{
+	width:150px;
+}
+.prInput{
+	width:100px;
+}
+.carrito{
+	font-size: 15pt;
+    width: 100%;
+
+    text-align: center;
+    background-color: slategrey;
+    color: white;
+    border-radius: 25px;
+  border: 2px solid dimgrey;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 3px 3px #5049a9;
+  
+}
+.carrito:hover{
+	background-color: white;
+}
+.carrito2{
+	font-size: 15pt;
+    width: 100%;
+    text-align: center;
+    background-color: #fafafa;
+    color: black;
+    border-radius: 25px;
+  border: 2px solid dimgrey;
+  padding: 20px;
+  /*box-shadow: 3px 3px #5049a9;*/
+  
+}
+.rabi{
+	border-radius: 15px;
+  border: 2px solid dimgrey;
+  padding: 20px;
+  box-shadow: 3px 3px #5049a9;
+}
+.ordenar{
+	font-size: 15pt;
+    width: 100%;
+    padding-left: 10%;
+    text-align: center;
+        background-color: #49a954;
+    color: white;
+    border-radius: 25px;
+  border: 2px solid dimgrey;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 3px 3px #5049a9;
+  
+}
+.ordenar:hover{
+	background-color: white;
+	color:black;
+}
+.checkout{
+
+	font-size: 15pt;
+    width: 100%;
+    padding-left: 10%;
+    text-align: center;
+        background-color: slategrey;
+    color: white;
+    border-radius: 25px;
+  border: 2px solid dimgrey;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 3px 3px #5049a9;
+  
+}
+.checkout:hover{
+	background-color: white;
+	color:black;
+}
+.regresar{
+	font-size: 15pt;
+    width: 100%;
+    padding-left: 10%;
+    text-align: center;
+        background-color: slategrey;
+    color: white;
+    border-radius: 25px;
+  border: 2px solid dimgrey;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 3px 3px #5049a9;
+  
+}
+.regresar:hover{
+	background-color: white;
+	color:black;
+}
+.total_title{
+	font-size: 26pt;
+    width: 80%;
+    padding-left: 10%;
+    text-align: center;
+    background-color: #49a954;
+    color: white;
+}
+.total{
+	font-size: 26pt;
+    width: 100%;
+    text-align: center;
+    background-color: #fafafa;
+    color: #49a954;
+}
+.compras{
+	background-color: lightgrey;
+
+}
+.hide{
+
+}
+.totalind{
+	font-family: monospace;
+	color: black;
+	font-size: 16pt;
+}
+.button-p {
+    margin: 0 0 0 5px;
+    text-indent: -9999px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    float: left;
+    text-align: center;
+    background: url(img/plus.png) no-repeat;
+    background-size: cover;
+}
+.button-m {
+    margin: 0 0 0 5px;
+    text-indent: -9999px;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    float: left;
+    text-align: center;
+    background: url(img/minus.png) no-repeat;
+    background-size: cover;
+}
+.inputsmall{
+	float: left;
+    width: 60px;
+    font: 700 20px Helvetica,sans-serif;
+    padding: 3px 0 0;
+}
+.mapa{
+	 border-radius: 25px;
+  border: 2px solid dimgrey;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 3px 3px #5049a9;
+  background-color: white;
+  color:black;
+}
+.splash{
+	display: none;
+	background-color: white;
+	width:100%;
+	padding:20px;
+	/*height:400px;*/
+}
+.glass {
+    position: fixed;
+    opacity:.0;
+    left: 0px;
+    right: 0px;
+    width: 100vw;
+    height: 100vh;
+    background: url(https://www.searchpng.com/wp-content/uploads/2018/12/cracked-Glass.png);
+    background-size: cover;
+    z-index: 9000;
+    pointer-events: none;
+}
+</style>
+
+<body>
+	<div class="glass"></div>
+	<br>
+<div class="container head" >
+	<div class="row">
+		<div class="col-sm-6" >
+			<h1 ></h1>
+			<br>
+			<h5 style="color:black;"> Bienvenidx al mercado digital de El Renacer del Campo.</h5>
+			<h5 style="color:black;"> Contacto por Whatsapp: 55--------</h5>
+			<br>
+			<!-- <input type="button" value="¿Cómo funciona?" name=""/> -->
+		</div>
+		<div class="col-sm-6">
+			<img src="img/logo.png" class="logo">
+			<hr>
+		<!-- 	<audio controls>
+  <source src="clair-de-lune.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio><br>
+Claro de luna - Kamasi Washington -->
+<hr>
+			<span style="color:#49a954;">Prueba 1
+<br>
+<!-- <img src="img/onigiri.gif" style="width:150px;"> -->
+	</span>
+		</div>
+	</div>
+
+
+	<hr/>
+</div>
+
+
+<div class="container searcharea" >
+		<div class="row">
+		<!-- <div class="col-sm-4" id="search1">
+			<p class="instrucciones">1-Añade productos a tu orden mediante el menú</p>
+			
+		</div> -->
+		<div class="col-sm-4" id="search2">
+			<p class="instrucciones">Completa la información de tu pedido:</p>
+			<br>
+			<form>
+			  <div class="form-group">
+			    <label for="exampleInputEmail1"></label>
+			    <input type="text" class="form-control rabi" id="nombre" aria-describedby="emailHelp" placeholder="NOMBRE">
+			    <!-- <small id="emailHelp" class="form-text text-muted">Nombre</small> -->
+			  </div>
+			  <div class="form-group">
+			    <input type="number" class="form-control rabi" id="telefono" aria-describedby="emailHelp" placeholder="TELÉFONO">
+			    <!-- <small id="emailHelp" class="form-text text-muted">Nombre</small> -->
+			  </div>
+			  <div class="form-group">
+			    <input type="text" class="form-control rabi" id="direccion" aria-describedby="adress" placeholder="DIRECCIÓN">
+			    <!-- <small id="emailHelp" class="form-text text-muted">Nombre</small> -->
+			  </div>
+			  <div class="form-group">
+			    <input type="text" class="form-control rabi" id="comentarios" aria-describedby="comments" placeholder="COMENTARIOS">
+			    <!-- <small id="emailHelp" class="form-text text-muted">Nombre</small> -->
+			  </div>
+			  <!-- <div class="form-check">
+			    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+			    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+			  </div> -->
+			  
+			</form>
+		</div>
+		<div class="col-sm-4" id="search3">
+			<p class="instrucciones">Escoge tu forma de pago y haz checkout</p>
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<input type="radio" name="zona" id="zona1" value="0"> En efectivo el lunes 6 de julio: $0<br>
+					<input checked="checked" type="radio" name="zona" id="zona1" value="30"> Por transferencia electrónica: $0<br>
+					<input type="radio" name="zona" id="zona2" value="80"> Pago en efectivo el Viernes 10 de julio: $0<br>
+					
+				</div>	
+				
+			</div>
+			<br>
+			<div class="row">
+					<!-- <a class="mapa" style="font-size:11pt;" href="https://www.google.com/maps/d/viewer?mid=1nFVS9-qWElMCTQWsoXsSD6tjGZ-3hC8-&ll=19.372279482750603%2C-99.19043649999998&z=12" target="_blank">Ver mapa
+						<br>
+						<!-- <img src="img/mapa.png" style="height: 50%;"> -->
+					</a> -->
+			
+			</div>
+			
+			
+			
+			
+			<br>
+
+		</div>
+		<div class="col-sm-4" id="search3" style="padding: 30px;">
+			<div class="row">
+				
+					<div class="carrito2"><p style="font-size: 13pt;color:red;">total:</p><span id="sum">0</span> Pesos </div>
+				
+				
+			</div>
+			<br><br><br>
+			<div class="row">
+					<div class="checkout" onclick="checkout();">checkout</div>
+			</div>
+		</div>
+	</div>
+	<div class="row"><hr>
+	</div>	
+</div>	
+<hr/>
+<div class="container splash" >
+
+
+
+	<div class="regresar" onclick="regresar();">regresar al menú</div>
+	<br>
+	<h3>Información de contacto:</h3>
+<h4 style="color:red;" id="confirmainfo"></h4>
+<h4>TOTAL:</h4>
+<h4 style="color:red;" id="confirmatotal"></h4>
+	
+	<hr>
+	<p>Si quieres revisar nuevamente tu pedido, puedes utilizar el botón de “regresa al menú” y usar el botón de vizualisar pedido. </p>
+	<hr>
+
+	<h4>Siguientes pasos:</h4>
+	<ul>
+		
+</li>
+	</ul>
+	
+<h5>Instrucciones finales:</h5>
+    
+<hr>
+   
+
+
+<div id="avisofinal"></div>
+<h1 id="numorden"></h1>
+<br>
+<hr>
+<div class="ordenar" onclick="ordenar();">COMPLETAR ORDEN</div>
+</div>
+
+<div class="container" id="table_cont" >
+<div class="row" style="background-color: white;">
+	<div class="col-sm-6" >
+		Buscar por palabra:<br>
+		<input type="text" id="myinput" style="width:100%;" class="rabi"/><br>
+	</div>   
+	<div class="col-sm-6" >
+		Visualizar solo compras:<br>
+			<div class="carrito" onclick="togglecar()"><img src="img/carrito.png" style="width:50px;"></div>
+	</div>
+	
+		
+			
+		
+
+
+</div>
+<div class="row">
+	<table id="myTable" class="table products" cellspacing="0" width="100%"> <!-- table-striped table-bordered table-sm -->
+	  	<thead>
+	    <tr>
+	      
+	      <th class="th-sm">Productor
+	      </th>
+	      <th class="th-sm">producto
+	      </th>
+	      <th class="th-sm">existencia
+	      </th>
+	      <th class="th-sm">unidad
+	      </th>
+	      <th class="th-sm">precio
+	      </th>
+	      <th class="th-sm">ordenar
+	      </th>
+	      <th class="th-sm">total por producto
+	      </th>
+	     
+	    </tr>
+	  	</thead>
+	  	<tbody id="tabla_productos">
+	    	<!-- <tr>
+		      
+		      <td>Cerveza lagger</td>
+		      <td>Mounstro de Agua</td>
+		      <td>$61</td>
+		      <td>input</td>
+		      <td>preciotot</td>
+		    </tr> -->
+		    
+		  </tbody>
+		  <tfoot>
+		    
+		  </tfoot>
+	</table>
+</div> <!-- ROW -->
+</div> <!-- table_container -->
+</body>
+<script type="text/javascript">
+_MENU={};
+_productos={};
+carselected=false;
+$(document).ready(function(){
+	makesum();
+	getMenu();
+
+
+	  $("#myinput").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#myTable tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+	  $('input:radio[name=zona]').on("click", function() {
+	    makesum();
+	  });
+
+});
+
+function getMenu(){
+
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+  		if (this.readyState == 4 && this.status == 200) {
+	    var myObj = JSON.parse(this.responseText);
+	    _MENU=myObj;
+	    console.log(_MENU)
+	    despliegaMenu();
+	    
+	  	}
+	};
+	xmlhttp.open("GET", "/menu", true);
+	xmlhttp.send();
+}
+
+function despliegaMenu(){
+
+	productores=[];
+
+	for(entry in _MENU){
+		originalname=entry;
+		nomnew=entry.split("(");
+		redes="-";
+		nomproductor=nomnew[0].trim();
+		nomproductor.replace('"','');
+
+		productores.push(nomproductor);
+		// if(nomnew[1]){
+		// 	redes=nomnew[1].replace(")","");
+		// 	nomproductor='<a href="'+'https://www.instagram.com/'+nomproductor.replace("@","")+'" target="_blank">'+nomproductor+'</a>'
+		// }
+		buttons='';
+
+		
+	    for(i=0;i<_MENU[entry].length;i++){
+	    	min=0;
+	    	d_=_MENU[entry][i];
+	    	nomproducto=d_[0].replace("[[[[[[[[[[[AGOTADO]]]]]]]]]]","(AGOTADO)").trim();
+	    	_productos[d_[9]]=[d_[0]+"[|]"+originalname,0,d_[7]]
+	    	//Procesa instagram
+	    	linkSocial=d_[5];
+	    	if(d_[5].includes("@")){
+	    		f1=d_[5].split("@");
+	    		linkSocial=f1[0].replace("(","")+'<a target="_blank" href="https://www.instagram.com/'
+	    					+f1[1].replace(")","") 
+	    					+ '">@'+f1[1].replace(")","")+'</a>';
+	    		
+	    	}
+	    	//procesa fraccionados
+	    	if(d_[1].includes("/")){
+	    		console.log(d_[1],"--")
+	    		if(d_[1].includes("1/2")){min=".5"}
+	    		if(d_[1].includes("1/4")){min=".25"}
+	    		trstr='<tr class="prow unselected" id="'+d_[9]+'">\
+		      <td>'+linkSocial+'</td>\
+		      <td style="background-color:#ffffff;">'+nomproducto+'</td>\
+		      <td>'+d_[3]+'</td>\
+		      <td>'+d_[1]+'</td>\
+		      <td>'+d_[7]+'</td>'+
+		      '<td style="min-width:200px;background-color:#ffffff;"><div class="inc button-m">+</div><input value="0" type="number" max="'+d_[3]+'" id="tentacles" idrow="'+d_[9]+'" onchange="updateInput(this.value,'+d_[9]+')" class="prInput inputsmall" producer="" product="'+d_[0]+'" name="tentacles"min="0" step="'+min+'" ><div class="plu button-p">-</div></td>'+
+		      '<td class="totalind">0</td>'+
+		    '</tr>'
+	    	}
+	    	else{
+	    		trstr='<tr class="prow unselected" id="'+d_[9]+'">\
+		      <td>'+linkSocial+'</td>\
+		      <td style="background-color:#ffffff;">'+nomproducto+'</td>\
+		      <td>'+d_[3]+'</td>\
+		      <td>'+d_[1]+'</td>\
+		      <td>'+d_[7]+'</td>'+
+		      '<td style="min-width:200px;background-color:#ffffff;"><div class="inc button-m">+</div><input value="0"  type="number" max="'+d_[3]+'" id="tentacles" idrow="'+d_[9]+'" onchange="updateInput(this.value,'+d_[9]+')" class=" inputsmall" producer="" step="1" product="'+d_[0]+'" name="tentacles"min="0" disabled><div class="plu button-p">-</div></td>'+
+		      '<td class="totalind">0</td>'+
+		    '</tr>'
+	    	}
+	    	
+	    	$("#tabla_productos").append(trstr)
+	    }
+
+	}
+	initB();
+	    
+}
+function initB(){
+
+	$(".button-p").on("click", function() {
+		step=Number.parseFloat ( $(this).parent().find("input").attr("step") );
+		actual=Number.parseFloat ( $(this).parent().find("input").val() );
+		max=Number.parseFloat ( $(this).parent().find("input").attr("max") );
+		idrow= $(this).parent().find("input").attr("idrow") ;
+		if(actual+step <= max){
+			$(this).parent().find("input").val(actual+step);
+			updateInput($(this).parent().find("input").val(), idrow);
+		}
+		
+		//makesum();
+		console.log("plus",step)
+	});
+	$(".button-m").on("click", function() {
+		step=Number.parseFloat ( $(this).parent().find("input").attr("step") );
+		actual=Number.parseFloat ( $(this).parent().find("input").val() );
+		idrow= $(this).parent().find("input").attr("idrow") ;
+		if(actual-step >= 0){
+			$(this).parent().find("input").val(actual-step);
+			updateInput($(this).parent().find("input").val(), idrow);
+		}
+		
+		//makesum();
+	});
+
+
+}
+
+
+function togglecar(){
+	if(carselected){
+		$(".carrito").css("background-color","grey")
+		$(".unselected").toggle();
+		carselected=false;
+	}
+	else{
+		$(".carrito").css("background-color","cornflowerblue")
+		$(".unselected").toggle();
+		carselected=true;
+	}
+}
+function updateInput(ish, idrow){
+	_productos[idrow][1]=ish;
+	precio=Number.parseFloat( _productos[idrow][2].replace("$","") );
+	if(ish==0){
+		$("tr#"+idrow).css("background-color","white")
+		$("tr#"+idrow).addClass( "unselected" );
+		$("tr#"+idrow).find("td.totalind").html(0)
+	}
+	else{
+		$("tr#"+idrow).css("background-color","skyblue")
+		$("tr#"+idrow).removeClass( "unselected" );
+		totalind=Number.parseFloat(ish)*precio;
+		$("tr#"+idrow).find("td.totalind").html(totalind)
+	}
+	//console.log(_productos)
+	makesum()
+	//console.log(_productos)
+}
+function makesum(){
+	num=0;
+	sum=0;
+	envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
+	sum+=envio;
+	$("#compras0").html("");
+	$("#compras1").html("");
+	$("#compras2").html("");
+	for (id in _productos){
+		rem=num%3;
+		item=_productos[id];
+		precio=Number.parseFloat(item[2].replace("$","") );
+		cantidad=Number.parseFloat(item[1] );
+		sum+=precio*cantidad;
+		if (cantidad>0) {
+			carro=item[0]+" - "+cantidad+" - "+(precio*cantidad);
+			//$("#compras"+rem).append(carro);
+			num+=1;
+		}
+		
+	}
+	$("#sum").text(sum);
+}
+function checkout(){
+	form_name=$("#nombre").val();
+		form_telefono=$("#telefono").val();
+		form_direccion=$("#direccion").val();
+		form_comentario=$("#comentarios").val();
+		if(form_name=="" || form_telefono=="" || form_direccion=="" ){
+			alert("Favor de completar el registro");
+		}
+		else{
+			form_total=$("#sum").html();
+		envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
+		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"costo_envio":envio,"orden":_productos}
+		$("#confirmainfo").text(form_name+" , "+form_direccion+" , "+form_telefono+" , ");
+		$("#confirmatotal").text("$"+form_total+"  Pesos");
+		$("#table_cont").hide();
+		$(".splash").show();
+		$(".searcharea").hide();
+		}
+		
+}
+function regresar(){
+		
+		$("#table_cont").show();
+		$(".splash").hide();
+		$(".searcharea").show();
+}
+function ordenar(){
+		$(".ordenar").hide();
+		orden={};
+		form_name=$("#nombre").val();
+		form_telefono=$("#telefono").val();
+		form_direccion=$("#direccion").val();
+		form_comentario=$("#comentarios").val();
+		form_total=$("#sum").html();
+		envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
+		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"costo_envio":envio,"orden":_productos}
+		//console.log("_productos",JSON.stringify(orden));
+	        //var data = _productos;
+	        $.ajax({
+        url: '/orden',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(orden),
+        dataType: 'json',
+        success: function (data){
+			console.log("DATA",data);
+			$("#avisofinal").html('<p>Tu pedido ha sido procesado! Para confirmar tu orden te pedimos enviar tu comprobante de pago y tu número de orden por whatsapp al teléfono: 5572117094.</p> <p>Si deseas visualizar tu pedido, entra al siguiente link: <a href="http://www.ciudadsilvestre.mx/orden" target="_blank">www.ciudadsilvestre.mx/orden</a></p>');
+			$("#numorden").text("Número de orden: "+data.orden);
+			$(".regresar").hide();
+			// $("#search1").html('<h1>numero de orden: '+data.orden+'</h1>')
+			// $("#search2").html('')
+			// $("#search3").html('Tu pedido ha sido procesado! Para confirmar tu orden te pedimos enviar tu comprobante de pago y tu número de orden por whatsapp al teléfono: 5572117094')
+		}
+    });
+
+}
+
+</script>
+	
+</script>
+</html>

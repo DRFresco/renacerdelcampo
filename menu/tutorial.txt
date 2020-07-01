@@ -1,0 +1,76 @@
+tutorial.txt
+
+
+npm install express ejs request gs readline googleapis@39 --save
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1vSZdfGTaGD3q5QATdU4ICLnAMDwuyCJhHgIo4CDyd1EjDvkAkUrFhVhp1w6l0hY7kV0QD7b-ZsY2RCp/pubhtml?gid=0&single=true
+
+https://spreadsheets.google.com/feeds/cells/1UIV4RkOx8KJK2zQYig0klH5_f8FCOdwIWV8YF2VyF8I/2/public/values?alt=json
+
+
+1vSZdfGTaGD3q5QATdU4ICLnAMDwuyCJhHgIo4CDyd1EjDvkAkUrFhVhp1w6l0hY7kV0QD7b-ZsY2RCp
+
+https://spreadsheets.google.com/feeds/cells/2PACX-1vSZdfGTaGD3q5QATdU4ICLnAMDwuyCJhHgIo4CDyd1EjDvkAkUrFhVhp1w6l0hY7kV0QD7b-ZsY2RCp/1/public/values?alt=json
+
+
+
+https://docs.google.com/spreadsheets/d/e/2PACX-1UIV4RkOx8KJK2zQYig0klH5_f8FCOdwIWV8YF2VyF8I/pubhtml?gid=0&single=true
+
+
+2PACX-1vQCGaLyubdklN519c68Slf6QSmqkxQUz-eHtQSXWYSOMtwYsU8Q0OEZYL8zFHVnTcz8SDWwChncGWHR
+
+
+https://spreadsheets.google.com/feeds/cells/2PACX-1vQCGaLyubdklN519c68Slf6QSmqkxQUz-eHtQSXWYSOMtwYsU8Q0OEZYL8zFHVnTcz8SDWwChncGWHR/2/public/values?alt=json
+
+
+
+npm install crawler fast-csv --save
+
+
+
+1 . Influir formulario de cliente ( Nombre, teléfono, dirección,  Observaciones adicionales ) 
+2. Restringir tipo de dato por tipo de unidad ( revisar el drive) 
+3. Determinar Lat/ Lng para calcular tipo de envío 
+4. Boton de generar Orden 
+5. Incluir los disponibles y contemplarlo del inventario 
+6. Que aparezca el total de la Orden a lado de generar boton
+7. Que al llenar el form no haga zoom en los números , que conserve el fit sobre la pantalla
+
+skypunkgedatsu:
+Ubuntu 18.04
+SkyPunkG3d4tsu!
+N1rv4n4esley!!
+
+https://github.com/DRFresco/orion-v1.git
+
+ssh root@199.244.51.123 
+rm -rf /root/orion/menuManager/ordenes
+rm -rf /orion/menuManager/archivo
+mv /root/orion/menuManager/ordenes /root/orion/menuManager/archivo/ordenes13jun
+mv /root/orion/menuManager/archivo/ordenes9jun /root/orion/menuManager/ordenes
+mv /root/orion/menuManager/archivo/ordenes9jun /root/orion/menuManager/ordenes 
+
+cd /root/orion/menuManager/ordenes/ordenes9jun
+mv * ../
+cd ..
+rmdir ordenes9jun
+
+
+git fetch --all
+git reset --hard origin/master
+
+
+zip -r ordenes23jun.zip ordenes23jun
+zip -r ordenes16jun.zip ordenes
+
+mv /root/orion/menuManager/ordenes16jun.zip /root/orion/menuManager/archivo/ordenes16jun.zip
+
+cp -r /root/orion/menuManager/ordenes /root/orion/menuManager/archivo/ordenes23jun 
+
+%s/,-3,/20/g
+
+
+
+
+
+
