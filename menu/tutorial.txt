@@ -36,12 +36,9 @@ npm install crawler fast-csv --save
 6. Que aparezca el total de la Orden a lado de generar boton
 7. Que al llenar el form no haga zoom en los números , que conserve el fit sobre la pantalla
 
-skypunkgedatsu:
-Ubuntu 18.04
-SkyPunkG3d4tsu!
-N1rv4n4esley!!
 
-https://github.com/DRFresco/orion-v1.git
+
+https://github.com/DRFresco/renacerdelcampo
 
 ssh root@199.244.51.123 
 rm -rf /root/orion/menuManager/ordenes
