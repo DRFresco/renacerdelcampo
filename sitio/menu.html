@@ -306,9 +306,9 @@ Claro de luna - Kamasi Washington -->
 			
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="radio" name="zona" id="zona1" value="0"> En efectivo el lunes 6 de julio: $0<br>
-					<input checked="checked" type="radio" name="zona" id="zona1" value="30"> Por transferencia electrónica: $0<br>
-					<input type="radio" name="zona" id="zona2" value="80"> Pago en efectivo el Viernes 10 de julio: $0<br>
+					<input type="radio" name="zona" id="zona1" value="0" rec="milpa"> Recolección en la milpa: $0<br>
+					<input checked="checked" type="radio" name="zona" id="zona1" value="0" rec="canica"> recolección en la Canica: $0<br>
+					<input type="radio" name="zona" id="zona2" value="0" rec="verde venus"> recolección en Verde Venus: $0<br>
 					
 				</div>	
 				
@@ -703,7 +703,8 @@ function checkout(){
 		else{
 			form_total=$("#sum").html();
 		envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
-		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"costo_envio":envio,"orden":_productos}
+		recoleccion=$('input:radio[name=zona]:checked').attr("rec") ;
+		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"recoleccion":recoleccion,"costo_envio":envio,"orden":_productos}
 		$("#confirmainfo").text(form_name+" , "+form_direccion+" , "+form_telefono+" , ");
 		$("#confirmatotal").text("$"+form_total+"  Pesos");
 		$("#table_cont").hide();
@@ -730,16 +731,18 @@ function ordenar(){
 		form_comentario=$("#comentarios").val();
 		form_total=$("#sum").html();
 		envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
+		recoleccion=$('input:radio[name=zona]:checked').attr("rec") ;
 		}
 		else{
 			form_name=clientes[clienteSeleccionado].nombre;
 			form_telefono=clientes[clienteSeleccionado].telefono;
 			form_direccion=clientes[clienteSeleccionado].direccion;
 			form_comentario=clientes[clienteSeleccionado].comentario;
+			recoleccion=$('input:radio[name=zona]:checked').attr("rec") ;
 			form_total=$("#sum").html();
 			envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
 		}
-		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"costo_envio":envio,"orden":_productos}
+		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"recoleccion":recoleccion,"costo_envio":envio,"orden":_productos}
 		//console.log("_productos",JSON.stringify(orden));
 	        //var data = _productos;
 	        $.ajax({
