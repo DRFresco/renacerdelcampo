@@ -262,11 +262,22 @@ Claro de luna - Kamasi Washington -->
 			<p class="instrucciones">1-Añade productos a tu orden mediante el menú</p>
 			
 		</div> -->
+		
 		<div class="col-sm-4" id="search2">
+
+			<p class="instrucciones">Selecciona el cliente</p>
+			<select class="form-control" id="clientesSel" >
+				<option value="null" selected="selected">seleccionar</option>
+				<!-- <option value="c1">cliente 1</option>
+				<option value="c2">cliente 2</option> -->
+				<option value="new">Nuevo cliente</option>
+
+			</select>
+			<!-- <input type="password" id="fakepass"> -->
 			<p class="instrucciones">Completa la información de tu pedido:</p>
 			<br>
-			<form>
-			  <div class="form-group">
+			<form id="registroForm" style="display:none;">
+			  <div class="form-group" >
 			    <label for="exampleInputEmail1"></label>
 			    <input type="text" class="form-control rabi" id="nombre" aria-describedby="emailHelp" placeholder="NOMBRE">
 			    <!-- <small id="emailHelp" class="form-text text-muted">Nombre</small> -->
@@ -426,10 +437,46 @@ Claro de luna - Kamasi Washington -->
 </div> <!-- table_container -->
 </body>
 <script type="text/javascript">
+	
+clientes=
+{      "c1":{
+		nombre:"Cliente 1",
+		telefono:"55----",
+		direccion:"Dir1",
+		comentario:"comentario1",
+		days:[0,1,1,0,1,1,0,0]
+		},
+		"c4":{
+		nombre:"Walo",
+		telefono:"55----",
+		direccion:"Dir2",
+		comentario:"comentario2",
+		days:[0,1,1,0,1,1,0,0]
+		},
+		"c3":{
+		nombre:"cliente 3",
+		telefono:"55----",
+		direccion:"Dir3",
+		comentario:"comentario3",
+		days:[0,0,0,0,1,1,0,0]
+		},
+		"c4":{
+		nombre:"cliente4",
+		telefono:"55----",
+		direccion:"Dir4",
+		comentario:"comentario4",
+		days:[1,1,1,1,1,1,1,0]
+		}
+};
+
+</script>
+<script type="text/javascript">
 _MENU={};
 _productos={};
 carselected=false;
+
 $(document).ready(function(){
+	clientList();
 	makesum();
 	getMenu();
 
@@ -445,6 +492,16 @@ $(document).ready(function(){
 	  });
 
 });
+
+function clientList(){
+	var date = new Date();
+	var daynum = date.getDay();
+	for(id in clientes){
+		if(clientes[id].days[daynum]){
+			$("#clientesSel").append('<option value="'+id+'">'+clientes[id].nombre+'</option>');
+		}
+	}
+}
 
 function getMenu(){
 
@@ -613,12 +670,34 @@ function makesum(){
 	}
 	$("#sum").text(sum);
 }
+$( "#clientesSel" ).change(function() {
+  clienteSeleccionado=$("#clientesSel option:selected").attr("value");
+  if(clienteSeleccionado=="new"){
+  	$("#registroForm").show();
+  }
+  else{
+  	$("#registroForm").hide();
+  }
+});
+
 function checkout(){
-	form_name=$("#nombre").val();
-		form_telefono=$("#telefono").val();
-		form_direccion=$("#direccion").val();
-		form_comentario=$("#comentarios").val();
-		if(form_name=="" || form_telefono=="" || form_direccion=="" ){
+		clienteSeleccionado=$("#clientesSel option:selected").attr("value");
+		console.log(clienteSeleccionado);
+		if(clienteSeleccionado=="new"){
+			form_name=$("#nombre").val();
+			form_telefono=$("#telefono").val();
+			form_direccion=$("#direccion").val();
+			form_comentario=$("#comentarios").val();
+		}
+		else if(clienteSeleccionado!="null"){
+
+			form_name=clientes[clienteSeleccionado].nombre;
+			form_telefono=clientes[clienteSeleccionado].telefono;
+			form_direccion=clientes[clienteSeleccionado].direccion;
+			form_comentario=clientes[clienteSeleccionado].comentario;
+		}
+		if(clienteSeleccionado=="null"){alert("Favor de escoger un cliente");}
+		else if(form_name=="" || form_telefono=="" || form_direccion=="" ){
 			alert("Favor de completar el registro");
 		}
 		else{
@@ -630,6 +709,7 @@ function checkout(){
 		$("#table_cont").hide();
 		$(".splash").show();
 		$(".searcharea").hide();
+		console.log(orden)
 		}
 		
 }
@@ -640,14 +720,25 @@ function regresar(){
 		$(".searcharea").show();
 }
 function ordenar(){
+	clienteSeleccionado=$("#clientesSel option:selected").attr("value");
 		$(".ordenar").hide();
 		orden={};
+		if(clienteSeleccionado=="new"){
 		form_name=$("#nombre").val();
 		form_telefono=$("#telefono").val();
 		form_direccion=$("#direccion").val();
 		form_comentario=$("#comentarios").val();
 		form_total=$("#sum").html();
 		envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
+		}
+		else{
+			form_name=clientes[clienteSeleccionado].nombre;
+			form_telefono=clientes[clienteSeleccionado].telefono;
+			form_direccion=clientes[clienteSeleccionado].direccion;
+			form_comentario=clientes[clienteSeleccionado].comentario;
+			form_total=$("#sum").html();
+			envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
+		}
 		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"costo_envio":envio,"orden":_productos}
 		//console.log("_productos",JSON.stringify(orden));
 	        //var data = _productos;

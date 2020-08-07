@@ -10,7 +10,7 @@
 	<!-- MDBootstrap Datatables  -->
 <script type="text/javascript" src="js/addons/datatables.min.js"></script>
 
-	<title>Renacer del Campo</title>
+	<title>〔 〄 〕 - Orion</title>
 </head>
 <style type="text/css">
 	table.dataTable thead .sorting:after,
@@ -223,15 +223,21 @@ body{
 			<h1 ></h1>
 			<br>
 			<h5 style="color:black;"> Administrador de órdenes</h5>
-			<h5 style="color:black;"> Contacto por Whatsapp: 5572117094</h5>
+			<h5 style="color:black;"> </h5>
 			<br>
-			
+			<p>En esta sección se administran la ordenes que recibe el mercado desde el menú. Las órdenes se confirman al recibir el comprobante de pago. La acción de confirmarla crea la guía de entrega en forma de PDF. Una orden confirmada puede tambien "des-confirmarse"</p>
 			<p>Si deseas visualizar tu pedido, entra al siguiente link: <a href="http://www.ciudadsilvestre.mx/orden" target="_blank">www.ciudadsilvestre.mx/orden</a></p>
 			<!-- <input type="button" value="¿Cómo funciona?" name=""/> -->
 		</div>
 		<div class="col-sm-6">
 			<img src="img/orion.png" class="logo">
 			<hr>
+			<input type="text" id="userF">
+      <input type="password" id="passwordF">
+      <br>
+      <br>
+      <input type="button" value="Actualizar lista" onclick="getOrdenes();" />
+
 			<!-- <span style="color:#49a954;">Hola! Lamentablemente la lista ya se cerró esta semana. La lista se actualiza los fines de semana y se cierra los días Martes a las 10AM. <br>
 				<p>Si quieres conocer más sobre que día se actualiza y como funcionan los pedidos  puedes escribirnos a nuestro WHATSAPP 5572117094. </p>
 
@@ -290,56 +296,60 @@ body{
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	getOrdenes();
+	//getOrdenes();
 
 
 });	
-
+function utf8_to_b64( str ) {
+  return window.btoa(unescape(encodeURIComponent( str )));
+}
 
 function getOrdenes(){
-		$("#tabla_productos").html("")
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-  		if (this.readyState == 4 && this.status == 200) {
-	    var myObj = JSON.parse(this.responseText);
-	    _MENU=myObj;
-	    console.log(_MENU)
-	    for(orden in _MENU["ordenes"]){
-	    	status="<p style='color:blue;'>REGISTRADA</p>";
-	    	filerep='<a target="_blank" href="/ordenes/'+orden+'"'+'>JSON</a>';
-	    	boton='<div class="plu button-p" onclick=\'confirm("'+orden+'");\'>-</div>';
-	    	if(_MENU["bandeja"][orden]){status="<p style='color:yellowgreen;'>CONFIRMADA</p>";
-	    	filerep='<a target="_blank" href="/bandeja/'+orden+'.pdf"'+'>PDF</a>';
-	    boton='<div class="inc button-m" onclick=\'unconfirm("'+orden+'");\'>+</div>';}
-	    	orden_st=orden.replace(".json","");
-	    	orden_info=_MENU["ordenes"][orden];
-	    	trstr='<tr class="prow unselected" id="'+orden_st+'">\
-		      <td></td><td>'+orden_st+'</td>\
-		      <td style="background-color:#ffffff;">'+orden_info.nombre+'</td>\
-		      <td>'+orden_info.total+'</td>\
-		      <td>'+orden_info.telefono+'</td>\
-		      <td>'+"info"+'</td>\
-		      <td>'+status+'</td>\
-		      <td>'+filerep+'</td>\
-		      <td>'+boton+'</td>'
-		      ;
-		      $("#tabla_productos").append(trstr)
+	_P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
+    op={"permission":_P}
+    $.ajax({
+        url: '/orion/backOrdenes',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(op),
+        success: function (data){
+        	var myObj = data;
+		    _MENU=myObj;
+		    console.log(_MENU)
+			    for(orden in _MENU["ordenes"]){
+			    	status="<p style='color:blue;'>REGISTRADA</p>";
+			    	filerep='<a target="_blank" href="/ordenes/'+orden+'"'+'>JSON</a>';
+			    	boton='<div class="plu button-p" onclick=\'confirm("'+orden+'");\'>-</div>';
+			    	if(_MENU["bandeja"][orden]){status="<p style='color:yellowgreen;'>CONFIRMADA</p>";
+			    	filerep='<a target="_blank" href="/bandeja/'+orden+'.pdf"'+'>PDF</a>';
+			    boton='<div class="inc button-m" onclick=\'unconfirm("'+orden+'");\'>+</div>';}
+			    	orden_st=orden.replace(".json","");
+			    	orden_info=_MENU["ordenes"][orden];
+			    	trstr='<tr class="prow unselected" id="'+orden_st+'">\
+				      <td></td><td>'+orden_st+'</td>\
+				      <td style="background-color:#ffffff;">'+orden_info.nombre+'</td>\
+				      <td>'+orden_info.total+'</td>\
+				      <td>'+orden_info.telefono+'</td>\
+				      <td>'+"info"+'</td>\
+				      <td>'+status+'</td>\
+				      <td>'+filerep+'</td>\
+				      <td>'+boton+'</td>'
+				      ;
+				      $("#tabla_productos").append(trstr)
+			    }
 	    }
-	    
-	    //despliegaMenu();
-	    
-	  	}
-	};
-	xmlhttp.open("GET", "/backOrdenes", true);
-	xmlhttp.send();
+	});
+	$("#tabla_productos").html("")
+	
 }
 
 function confirm(nombre){
+	_P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
 		$(".button-m").hide();
 		$(".button-p").hide();
-		orden={"nombre":nombre}
+		orden={"nombre":nombre,"permission":_P}
 	$.ajax({
-        url: '/backconfirm',
+        url: '/orion/backconfirm',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(orden),
@@ -350,11 +360,12 @@ function confirm(nombre){
 	});
 }
 function unconfirm(nombre){
+	_P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
 	$(".button-m").hide();
 		$(".button-p").hide();
-		orden={"nombre":nombre}
+		orden={"nombre":nombre,"permission":_P}
 	$.ajax({
-        url: '/backunconfirm',
+        url: '/orion/backunconfirm',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(orden),

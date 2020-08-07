@@ -9,13 +9,17 @@ var pdf = require('html-pdf');
 const multer = require('multer');
 const csv = require('fast-csv');
 _ = require('underscore');
+const readline = require('readline');
+
 
 //          (_    ,_,    _) 
 //          / `'--) (--'` \
 //         /  _,-'\_/'-,_  \
 //        /.-'     "     '-.\
 //         Julia Orion Smith
+
 const port = 3001; 
+const _K = "bWFyaWF8fHJlbmFjZXI="; 
 
 
 app.use(bodyParser.json())
@@ -118,7 +122,17 @@ app.get('/hello', function (req, res) {
 });
 //ADMIN
 app.get('/adminPrint', function (req, res) {
-	thistime="";
+	printsinglePDF(function(){
+		console.log("printed");
+		res.send("ok")
+	});
+
+});
+
+
+
+function printsinglePDF(callback) {
+thistime="";
 	bandeja={};
 	printed=0;
 	var options = { format: 'A4' };
@@ -145,7 +159,7 @@ app.get('/adminPrint', function (req, res) {
 				if(!bandeja[key] && printed<1){
 					printed++;
 					    pdf.create(htmls[key],{ format: 'Letter' }).toFile('./bandeja/'+key+'.pdf', function(err, res) {
-							if (err){console.log(err);} else {console.log(res);}
+							if (err){console.log(err);} else {console.log(res);callback();}
 						});
 				}
 		      
@@ -155,12 +169,30 @@ app.get('/adminPrint', function (req, res) {
 			 //  });
 		});
 	});
+}
+
+
+//ORION sec layer
+app.post('/orion/*', function (req, res, next) {
+	_P=req.body["permission"];
+	if(_P==_K){
+	
+		next();
+
+	}
+	else{
+		res.send({"status":"err","err":"incorrect key"})
+	}
 });
 
 
-// BACK
 
-app.post('/backconfirm', function (req, res) {
+// BACK
+app.get('/operacion', function (req, res) {
+	res.sendFile(path.join(__dirname + '/sitio/operacion.html'));
+
+});
+app.post('/orion/backconfirm', function (req, res) {
 	nombreorden=req.body["nombre"];
 	console.log("./ordenes/"+nombreorden)
 	fs.readFile("./ordenes/"+nombreorden, (err, data) => {
@@ -178,7 +210,7 @@ app.post('/backconfirm', function (req, res) {
 	
 	
 });
-app.post('/backunconfirm', function (req, res) {
+app.post('/orion/backunconfirm', function (req, res) {
 	nombreorden=req.body["nombre"];
 	fs.unlink("./bandeja/"+nombreorden+".pdf", function (err) {
 	    if (err) throw err;
@@ -186,7 +218,7 @@ app.post('/backunconfirm', function (req, res) {
 	     res.sendStatus(200)
 	}); 
 });
-app.get('/backOrdenes', function (req, res) {
+app.post('/orion/backOrdenes', function (req, res) {
 	menuManager.getOrdenesJson(function(ordenes){
   		res.send(ordenes);
   	});
@@ -201,14 +233,11 @@ Object.size = function(obj) {
     return size;
 };
 
-// OPERACIÓN  //cambiar get a post para hacer sistema rudimentario de seguridad
-
+// OPERACIÓN  
 app.get('/orionadmin', function (req, res) {
-	console.log(path.join(__dirname + '/sitio/admin.html'));
 	res.sendFile(path.join(__dirname + '/sitio/admin.html'));
 });
 app.get('/back', function (req, res) {
-
 	res.sendFile(path.join(__dirname + '/sitio/back.html'));
 });
 app.get('/status', function (req, res) {
@@ -221,35 +250,50 @@ app.get('/status', function (req, res) {
 	if (fs.existsSync(menufile)){status.menu=1; }
 	res.json(status);
 });
-app.post('/uploadmenu', function (req, res) {
-	newmenu=req.body["newmenu"];
-	menuManager.uploadmenu(newmenu,function (respuesta){
-		res.json(respuesta);
-	});
+app.post('/orion/uploadmenu', function (req, res) {
+	
+		newmenu=req.body["newmenu"];
+		menuManager.uploadmenu(newmenu,function (respuesta){
+			menuManager.liveMenu={};
+			menuManager.menu(function(menuR){
+				menuManager.updateCache(menuR);
+				menuManager.inicializa();
+				res.json(respuesta);
+				console.log("initializing...");
+			});
+			
+		});
+	
 
 });
-app.post('/closeShop', function (req, res) {
-	menuManager.closeShop(function(err){
-		if(!err){
-			res.send({"status":"suave",});
-		}
-		else{
-			res.send({"status":"err","err":err});
-		}
-		
-	})
+app.post('/orion/closeShop', function (req, res) {
+
+		menuManager.closeShop(function(err){
+			if(!err){
+				res.send({"status":"suave",});
+			}
+			else{
+				res.send({"status":"err","err":err});
+			}
+			
+		})
+	
 })
-app.post('/closeOp', function (req, res) {
-	console.log("closing operation");
-	menuManager.closeOp(function(err){
-		if(!err){
-			res.send({"status":"suave",});
-		}
-		else{
-			res.send({"status":"err","err":err});
-		}
+app.post('/orion/closeOp', function (req, res) {
+	
+		console.log("closing operation");
+		menuManager.closeOp(function(err){
+			if(!err){
+				res.send({"status":"suave",});
+			}
+			else{
+				res.send({"status":"err","err":err});
+			}
+			
+		})
+	
 		
-	})
+	
 });
 
 //PUERTO

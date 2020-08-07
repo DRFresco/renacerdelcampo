@@ -1,3 +1,11 @@
+NOTAS
+
+No poner comas.
+
+las unidades en productos iguales tienen que empatar.
+
+
+
 tutorial.txt
 
 

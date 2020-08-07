@@ -9,8 +9,8 @@
   <link href="css/addons/datatables.min.css" rel="stylesheet">
   <!-- MDBootstrap Datatables  -->
 <script type="text/javascript" src="js/addons/datatables.min.js"></script>
-
-  <title>Renacer del Campo</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+  <title>〔 〄 〕 - Orion</title>
 </head>
 <style type="text/css">
   table.dataTable thead .sorting:after,
@@ -226,7 +226,14 @@ textarea{
 <div class="container head" >
   <div class="row">
     <div class="col-sm-6" >
-      <h1 ></h1>
+      <h1 >Tutorial de administración</h1>
+      <p class="tutorial">Aquí se administra el ciclo del mercado que cuenta con 3 etapas:</p>
+      <ul>
+        <li>1 - Abrir tienda: Al subir un csv válido see abre el mercado con los productos específicados</li>
+        <li>2 - Cerrar tienda: inabilita la toma de órdenes y el menú</li>
+        <li>3 - Cerrar operación: Archiva las órdenes y limpia el sistema para empezar un nuevo ciclo</li>
+      </ul>
+
       <br>
       <h5 style="color:black;"> STATUS</h5>
       <h5 style="color:red;" id="status"> - </h5>
@@ -238,10 +245,13 @@ textarea{
     <div class="col-sm-6">
       <img src="img/orion.png" class="logo">
       <hr>
-      <!-- <span style="color:#49a954;">Hola! Lamentablemente la lista ya se cerró esta semana. La lista se actualiza los fines de semana y se cierra los días Martes a las 10AM. <br>
-        <p>Si quieres conocer más sobre que día se actualiza y como funcionan los pedidos  puedes escribirnos a nuestro WHATSAPP 5572117094. </p>
+      <p class="tutorial">Esta sección esta protegida con un login de administrador. En esta prueba el usuario es "orion" y el password es "1234"</p>
+      <hr>
+      <input type="text" id="userF">
+      <input type="password" id="passwordF">
+      
 
-  </span> -->
+  </span> 
     </div>
   </div>
 
@@ -343,6 +353,7 @@ function getStatus(){
           status="3-Listo para abrir";
           st=3;
         }
+      $(".notshow").hide();
       $("#op_"+st).show();
       $("#status").html(status)
       
@@ -351,11 +362,18 @@ function getStatus(){
   xmlhttp.open("GET", "/status", true);
   xmlhttp.send();
 }
+
+function utf8_to_b64( str ) {
+  return window.btoa(unescape(encodeURIComponent( str )));
+}
+
+
 function uploadmenu(){
+  _P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
     newmenu=$("#menuarea").val();
-    op={"newmenu":newmenu}
+    op={"newmenu":newmenu,"permission":_P}
   $.ajax({
-        url: '/uploadmenu',
+        url: '/orion/uploadmenu',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(op),
@@ -366,10 +384,12 @@ function uploadmenu(){
   });
 }
 function closeshop(){
-    password="null";
-    op={"pass":password}
+    _P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
+    console.log(_P)
+    newmenu=$("#menuarea").val();
+    op={"permission":_P}
   $.ajax({
-        url: '/closeShop',
+        url: '/orion/closeShop',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(op),
@@ -380,10 +400,11 @@ function closeshop(){
   });
 }
 function closeop(){
-    password="null";
-    op={"pass":password}
+    _P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
+    newmenu=$("#menuarea").val();
+    op={"permission":_P}
   $.ajax({
-        url: '/closeOp',
+        url: '/orion/closeOp',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(op),
