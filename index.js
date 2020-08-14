@@ -27,6 +27,7 @@ var fs = require("fs");
 var path = require('path');
 var menuManager = require('./menuManager');
 var printingSystem = require('./printingSystem');
+var mailerSystem = require('./mailer');
 //console.log("public",__dirname + '/sitio')
 app.use('/', express.static(__dirname + '/sitio'));
 app.use('/bandeja/', express.static(__dirname + '/bandeja'));
@@ -195,18 +196,22 @@ app.get('/operacion', function (req, res) {
 app.post('/orion/backconfirm', function (req, res) {
 	nombreorden=req.body["nombre"];
 	console.log("./ordenes/"+nombreorden)
-	fs.readFile("./ordenes/"+nombreorden, (err, data) => {
-	    if (err) throw err;
-	    let json = JSON.parse(data);
+	mailerSystem.testmail(nombreorden,function(mailst){
+		console.log(mailst);
+		fs.readFile("./ordenes/"+nombreorden, (err, data) => {
+		    if (err) throw err;
+		    let json = JSON.parse(data);
 
-	    html=printingSystem.printSingle(nombreorden,json);
-		pdf.create(html,{ format: 'Letter' }).toFile('./bandeja/'+nombreorden+'.pdf', function(err, result) {
-			if (err){console.log(err);} else {console.log(result);}
-			console.log('./bandeja/'+nombreorden+'.pdf',"CONFIRMED");
-			res.sendStatus(200)
+		    html=printingSystem.printSingle(nombreorden,json);
+			pdf.create(html,{ format: 'Letter' }).toFile('./bandeja/'+nombreorden+'.pdf', function(err, result) {
+				if (err){console.log(err);} else {console.log(result);}
+				console.log('./bandeja/'+nombreorden+'.pdf',"CONFIRMED");
+				res.sendStatus(200)
+			});
+			 
 		});
-		 
-	});
+	})
+	
 	
 	
 });

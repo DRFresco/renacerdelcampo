@@ -69,25 +69,26 @@ exports.printSingle= function (key,ordenInfo){
 			</table>
 		</div>
 		<pre  style="width:13vw;font-size: 4pt; height:10vw;position:fixed;top:10px;right: 140px;">
-		         wWWWw               wWWWw
-		   vVVVv (___) wWWWw         (___)  vVVVv
-		   (___)  ~Y~  (___)  vVVVv   ~Y~   (___)
-		    ~Y~   \|    ~Y~   (___)    |/    ~Y~
-		    \|   \ |/   \| /  \~Y~/   \|    \ |/
-		   \\|// \\|// \\|/// \\|//  \\|// \\\|///
-		jgs^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-		      C I U D A D   S I L V E S T R E 
-
-		      CIUDADSILVESTRE.MX
-
-		      55 72117094 
-
-		      @CIUDAD_SILVESTRE
-
-		</pre>
-
-		`;
+						           o|
+			   _________/__|__________
+			  |                  - (  |
+			 ,'-.                 . + |
+			(____".       ,-.    '   ||\
+			  |          /|,-|   ,-.  |\
+			  |      ,-./     | /'.-| |\
+			  |     /-.,|      /     ||\
+			  |    /     |    ,-.     |\
+			  |___/_______|__/___|_____| orion\
+\
+		      EL RENACER DEL CAMPO \
+\
+		      \
+\
+		      722 108 2700 \
+\
+		      @elrenacerdelcampo\
+\
+		</pre>`;
 		orden=ordenInfo.orden;
 		for(pp in orden){
 					arr=orden[pp];
@@ -174,22 +175,24 @@ exports.print=function (callback){
 			</table>
 		</div>
 		<pre  style="width:13vw;font-size: 4pt; height:10vw;position:fixed;top:10px;right: 140px;">
-		         wWWWw               wWWWw
-		   vVVVv (___) wWWWw         (___)  vVVVv
-		   (___)  ~Y~  (___)  vVVVv   ~Y~   (___)
-		    ~Y~   \|    ~Y~   (___)    |/    ~Y~
-		    \|   \ |/   \| /  \~Y~/   \|    \ |/
-		   \\|// \\|// \\|/// \\|//  \\|// \\\|///
-		jgs^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-		      C I U D A D   S I L V E S T R E 
-
-		      CIUDADSILVESTRE.MX
-
-		      55 72117094 
-
-		      @CIUDAD_SILVESTRE
-
+						           o|
+			   _________/__|__________
+			  |                  - (  |
+			 ,'-.                 . + |
+			(____".       ,-.    '   ||\
+			  |          /|,-|   ,-.  |\
+			  |      ,-./     | /'.-| |\
+			  |     /-.,|      /     ||\
+			  |    /     |    ,-.     |\
+			  |___/_______|__/___|_____| orion\
+\
+		      EL RENACER DEL CAMPO \
+\
+		      \
+\
+		      722 108 2700 \
+\
+		      @elrenacerdelcampo\
 		</pre>
 
 		`;

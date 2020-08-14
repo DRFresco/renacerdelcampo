@@ -26,8 +26,8 @@ table.dataTable thead .sorting_desc_disabled:before {
   bottom: .5em;
 }
 body{
-	/*background: url("img/onigiri.gif");*/
-	/*background-size: cover;*/
+	background: url("img/pasto.png");
+	background-size: 100vw;
 }
 .head{
 	text-align: center;
@@ -39,7 +39,7 @@ body{
 }
 .searcharea{
 	color: white;
-    background-color: #a0b18b;
+    background-color: #2b584e;
 }
 .logo{
 	width:150px;
@@ -58,7 +58,7 @@ body{
   border: 2px solid dimgrey;
   padding: 20px;
   cursor: pointer;
-  box-shadow: 3px 3px #5049a9;
+  box-shadow: 3px 3px #ecff9f;
   
 }
 .carrito:hover{
@@ -73,14 +73,14 @@ body{
     border-radius: 25px;
   border: 2px solid dimgrey;
   padding: 20px;
-  /*box-shadow: 3px 3px #5049a9;*/
+  /*box-shadow: 3px 3px #ecff9f;*/
   
 }
 .rabi{
 	border-radius: 15px;
   border: 2px solid dimgrey;
   padding: 20px;
-  box-shadow: 3px 3px #5049a9;
+  box-shadow: 3px 3px #ecff9f;
 }
 .ordenar{
 	font-size: 15pt;
@@ -93,7 +93,7 @@ body{
   border: 2px solid dimgrey;
   padding: 20px;
   cursor: pointer;
-  box-shadow: 3px 3px #5049a9;
+  box-shadow: 3px 3px #ecff9f;
   
 }
 .ordenar:hover{
@@ -112,7 +112,7 @@ body{
   border: 2px solid dimgrey;
   padding: 20px;
   cursor: pointer;
-  box-shadow: 3px 3px #5049a9;
+  box-shadow: 3px 3px #ecff9f;
   
 }
 .checkout:hover{
@@ -130,7 +130,7 @@ body{
   border: 2px solid dimgrey;
   padding: 20px;
   cursor: pointer;
-  box-shadow: 3px 3px #5049a9;
+  box-shadow: 3px 3px #ecff9f;
   
 }
 .regresar:hover{
@@ -197,7 +197,7 @@ body{
   border: 2px solid dimgrey;
   padding: 20px;
   cursor: pointer;
-  box-shadow: 3px 3px #5049a9;
+  box-shadow: 3px 3px #ecff9f;
   background-color: white;
   color:black;
 }
@@ -220,6 +220,16 @@ body{
     z-index: 9000;
     pointer-events: none;
 }
+.cuentaHec{
+	border-radius: 25px;
+  border: 2px solid #000;
+  padding: 25px;
+}
+.orderHec{
+	border-radius: 25px;
+  border: 2px solid #000;
+  padding: 25px;
+}
 </style>
 
 <body>
@@ -231,20 +241,20 @@ body{
 			<h1 ></h1>
 			<br>
 			<h5 style="color:black;"> Bienvenidx al mercado digital de El Renacer del Campo.</h5>
-			<h5 style="color:black;"> Contacto por Whatsapp: 55--------</h5>
+			<h5 style="color:black;"> Contacto por Whatsapp: 722 108 2700</h5>
 			<br>
 			<!-- <input type="button" value="¿Cómo funciona?" name=""/> -->
 		</div>
 		<div class="col-sm-6">
 			<img src="img/logo.png" class="logo">
 			<hr>
-		<!-- 	<audio controls>
-  <source src="clair-de-lune.mp3" type="audio/mpeg">
+		<audio controls>
+  <source src="risingwater.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio><br>
-Claro de luna - Kamasi Washington -->
+Rising Water - James Vincent McMorrow
 <hr>
-			<span style="color:#49a954;">Prueba 1
+			<span style="color:#49a954;">
 <br>
 <!-- <img src="img/onigiri.gif" style="width:150px;"> -->
 	</span>
@@ -265,39 +275,38 @@ Claro de luna - Kamasi Washington -->
 		
 		<div class="col-sm-4" id="search2">
 
-			<p class="instrucciones">Selecciona el cliente</p>
-			<select class="form-control" id="clientesSel" >
-				<option value="null" selected="selected">seleccionar</option>
+			
+			<select class="form-control" id="clientesSel" style="display:none;">
+				<option value="null" >seleccionar</option>
 				<!-- <option value="c1">cliente 1</option>
 				<option value="c2">cliente 2</option> -->
-				<option value="new">Nuevo cliente</option>
+				<option value="new" selected="selected">Nuevo cliente</option>
 
 			</select>
 			<!-- <input type="password" id="fakepass"> -->
 			<p class="instrucciones">Completa la información de tu pedido:</p>
 			<br>
-			<form id="registroForm" style="display:none;">
+			<form id="registroForm" >
 			  <div class="form-group" >
 			    <label for="exampleInputEmail1"></label>
 			    <input type="text" class="form-control rabi" id="nombre" aria-describedby="emailHelp" placeholder="NOMBRE">
-			    <!-- <small id="emailHelp" class="form-text text-muted">Nombre</small> -->
+			    
 			  </div>
+			  <div class="form-group">
+			   <input type="text" class="form-control rabi" id="mail" aria-describedby="emailHelp" placeholder="MAIL">
+			    
+			  
+			  </div> 
 			  <div class="form-group">
 			    <input type="number" class="form-control rabi" id="telefono" aria-describedby="emailHelp" placeholder="TELÉFONO">
-			    <!-- <small id="emailHelp" class="form-text text-muted">Nombre</small> -->
-			  </div>
-			  <div class="form-group">
-			    <input type="text" class="form-control rabi" id="direccion" aria-describedby="adress" placeholder="DIRECCIÓN">
-			    <!-- <small id="emailHelp" class="form-text text-muted">Nombre</small> -->
-			  </div>
+			    
+			  
+			  </div> 
 			  <div class="form-group">
 			    <input type="text" class="form-control rabi" id="comentarios" aria-describedby="comments" placeholder="COMENTARIOS">
-			    <!-- <small id="emailHelp" class="form-text text-muted">Nombre</small> -->
+			    
 			  </div>
-			  <!-- <div class="form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-			    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-			  </div> -->
+			  
 			  
 			</form>
 		</div>
@@ -306,26 +315,16 @@ Claro de luna - Kamasi Washington -->
 			
 			<div class="row">
 				<div class="col-sm-12">
-					<input type="radio" name="zona" id="zona1" value="0" rec="milpa"> Recolección en la milpa: $0<br>
-					<input checked="checked" type="radio" name="zona" id="zona1" value="0" rec="canica"> recolección en la Canica: $0<br>
-					<input type="radio" name="zona" id="zona2" value="0" rec="verde venus"> recolección en Verde Venus: $0<br>
+					<input type="radio" name="zona" id="zona1" value="50" rec="milpa"> Recolección en la milpa: $50<br>
+					<input checked="checked" type="radio" name="zona" id="zona1" value="50" rec="canica"> recolección en la Canica: $50<br>
+					<input type="radio" name="zona" id="zona2" value="50" rec="verde venus"> recolección en Verde Venus: $50<br>
 					
 				</div>	
 				
 			</div>
 			<br>
-			<div class="row">
-					<!-- <a class="mapa" style="font-size:11pt;" href="https://www.google.com/maps/d/viewer?mid=1nFVS9-qWElMCTQWsoXsSD6tjGZ-3hC8-&ll=19.372279482750603%2C-99.19043649999998&z=12" target="_blank">Ver mapa
-						<br>
-						<!-- <img src="img/mapa.png" style="height: 50%;"> -->
-					</a> -->
 			
-			</div>
-			
-			
-			
-			
-			<br>
+
 
 		</div>
 		<div class="col-sm-4" id="search3" style="padding: 30px;">
@@ -351,10 +350,12 @@ Claro de luna - Kamasi Washington -->
 
 	<div class="regresar" onclick="regresar();">regresar al menú</div>
 	<br>
-	<h3>Información de contacto:</h3>
-<h4 style="color:red;" id="confirmainfo"></h4>
-<h4>TOTAL:</h4>
-<h4 style="color:red;" id="confirmatotal"></h4>
+	<div class="cuentaHec">
+		<h3>Información de envío</h3>
+		<h4 style="color:black;font-family: monospace;font-size: 13px;" id="confirmainfo"></h4>
+		<h4>TOTAL:</h4>
+		<h4 style="color:red;" id="confirmatotal"></h4>
+	</div>
 	
 	<hr>
 	<p>Si quieres revisar nuevamente tu pedido, puedes utilizar el botón de “regresa al menú” y usar el botón de vizualisar pedido. </p>
@@ -362,11 +363,17 @@ Claro de luna - Kamasi Washington -->
 
 	<h4>Siguientes pasos:</h4>
 	<ul>
-		
-</li>
+		<li>Revisa tu pedido y da click en "Completar orden"</li>
 	</ul>
-	
-<h5>Instrucciones finales:</h5>
+	<hr>
+	<h4>Orden</h4>
+	<table class="ordenHec">
+		<tr>
+			<td>producto</td>
+			<td>cantidad</td>
+			<td>total</td>
+		</tr>
+	</table>
     
 <hr>
    
@@ -380,7 +387,7 @@ Claro de luna - Kamasi Washington -->
 </div>
 
 <div class="container" id="table_cont" >
-<div class="row" style="background-color: white;">
+<div class="row" style="background-color: #d2ffcf;padding: 24px;">
 	<div class="col-sm-6" >
 		Buscar por palabra:<br>
 		<input type="text" id="myinput" style="width:100%;" class="rabi"/><br>
@@ -683,36 +690,48 @@ $( "#clientesSel" ).change(function() {
 function checkout(){
 		clienteSeleccionado=$("#clientesSel option:selected").attr("value");
 		console.log(clienteSeleccionado);
-		if(clienteSeleccionado=="new"){
-			form_name=$("#nombre").val();
-			form_telefono=$("#telefono").val();
-			form_direccion=$("#direccion").val();
-			form_comentario=$("#comentarios").val();
-		}
-		else if(clienteSeleccionado!="null"){
-
-			form_name=clientes[clienteSeleccionado].nombre;
-			form_telefono=clientes[clienteSeleccionado].telefono;
-			form_direccion=clientes[clienteSeleccionado].direccion;
-			form_comentario=clientes[clienteSeleccionado].comentario;
-		}
+		
+		form_name=$("#nombre").val();
+		form_telefono=$("#telefono").val();
+		form_direccion=$('input:radio[name=zona]:checked').attr("rec");
+		form_comentario=$("#comentarios").val();
+		form_mail=$("#mail").val().trim();
+		
 		if(clienteSeleccionado=="null"){alert("Favor de escoger un cliente");}
-		else if(form_name=="" || form_telefono=="" || form_direccion=="" ){
+		else if(form_name=="" || form_mail=="" || form_telefono=="" || form_direccion=="" ){
 			alert("Favor de completar el registro");
 		}
 		else{
 			form_total=$("#sum").html();
 		envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
 		recoleccion=$('input:radio[name=zona]:checked').attr("rec") ;
-		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"recoleccion":recoleccion,"costo_envio":envio,"orden":_productos}
-		$("#confirmainfo").text(form_name+" , "+form_direccion+" , "+form_telefono+" , ");
-		$("#confirmatotal").text("$"+form_total+"  Pesos");
+		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"mail":form_mail,"dicreccion":form_direccion,"comentarios":form_comentario,"recoleccion":recoleccion,"costo_envio":envio,"orden":_productos}
+		
+		printCheckout(form_name,form_direccion,form_telefono,form_total,form_mail)
+		
 		$("#table_cont").hide();
 		$(".splash").show();
 		$(".searcharea").hide();
 		console.log(orden)
 		}
 		
+}
+function printCheckout(form_name,form_direccion,form_telefono,form_total,form_mail){
+	$("#confirmainfo").html(form_name+" <Br> "+form_direccion+" <Br> "+form_telefono+" <Br> "+form_mail);
+	$("#confirmatotal").text("$"+form_total+"  Pesos");
+
+	for(key in _productos){
+		if(_productos[key][1]>0){
+			precioooo=parseFloat(_productos[key][1])*parseFloat(_productos[key][2])
+			$(".ordenHec").append('<tr><td>'
+				+_productos[key][0]
+				+'</td><td style="background-color:skyblue;">'
+				+_productos[key][1]
+				+'</td><td>$ '
+				+precioooo
+				+'</td><tr>')
+		}
+	}
 }
 function regresar(){
 		
@@ -724,27 +743,18 @@ function ordenar(){
 	clienteSeleccionado=$("#clientesSel option:selected").attr("value");
 		$(".ordenar").hide();
 		orden={};
-		if(clienteSeleccionado=="new"){
+		
 		form_name=$("#nombre").val();
 		form_telefono=$("#telefono").val();
 		form_direccion=$("#direccion").val();
+		form_mail=$("#mail").val();
 		form_comentario=$("#comentarios").val();
 		form_total=$("#sum").html();
 		envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
 		recoleccion=$('input:radio[name=zona]:checked').attr("rec") ;
-		}
-		else{
-			form_name=clientes[clienteSeleccionado].nombre;
-			form_telefono=clientes[clienteSeleccionado].telefono;
-			form_direccion=clientes[clienteSeleccionado].direccion;
-			form_comentario=clientes[clienteSeleccionado].comentario;
-			recoleccion=$('input:radio[name=zona]:checked').attr("rec") ;
-			form_total=$("#sum").html();
-			envio=Number.parseFloat($('input:radio[name=zona]:checked').val() );
-		}
-		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"recoleccion":recoleccion,"costo_envio":envio,"orden":_productos}
-		//console.log("_productos",JSON.stringify(orden));
-	        //var data = _productos;
+		
+		orden={"nombre":form_name, "total":form_total,"telefono":form_telefono,"dicreccion":form_direccion,"comentarios":form_comentario,"recoleccion":recoleccion,"costo_envio":envio,"mail":form_mail,"orden":_productos}
+
 	        $.ajax({
         url: '/orden',
         type: 'POST',
@@ -753,7 +763,7 @@ function ordenar(){
         dataType: 'json',
         success: function (data){
 			console.log("DATA",data);
-			$("#avisofinal").html('<p>Tu pedido ha sido procesado! Para confirmar tu orden te pedimos enviar tu comprobante de pago y tu número de orden por whatsapp al teléfono: 5572117094.</p> <p>Si deseas visualizar tu pedido, entra al siguiente link: <a href="http://www.ciudadsilvestre.mx/orden" target="_blank">www.ciudadsilvestre.mx/orden</a></p>');
+			$("#avisofinal").html('<p>Tu pedido ha sido procesado! Para confirmar tu orden te pedimos enviar tu comprobante de pago y tu número de orden por whatsapp al teléfono: 722 108 2700.</p> <p>Si deseas visualizar tu pedido, entra al siguiente link: <a href="/orden" target="_blank">ORDEN</a></p>');
 			$("#numorden").text("Número de orden: "+data.orden);
 			$(".regresar").hide();
 			// $("#search1").html('<h1>numero de orden: '+data.orden+'</h1>')

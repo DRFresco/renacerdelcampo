@@ -26,7 +26,7 @@ table.dataTable thead .sorting_desc_disabled:before {
   bottom: .5em;
 }*/
 body{
-	background: url("img/jitomate.jpg");
+	background: url("img/pasto.png");
 	background-size: cover;
 }
 .head{
@@ -93,8 +93,8 @@ body{
 		<div class="col-sm-6" >
 			<h1 ></h1>
 			<br>
-			<h5 style="color:black;"> @ciudad_silvestre nace con el objetivo de vincular a productores de zonas aledañas a la Ciudad de México con redes de consumo con interés en productos de alta calidad y en trazabilidad de producción.</h5>
-			<h5 style="color:black;"> Contacto por Whatsapp: 5572117094</h5>
+			<h5 style="color:black;"> </h5>
+			<h5 style="color:black;"> Contacto por Whatsapp: 722 108 2700</h5>
 			<br>
 			<!-- <input type="button" value="¿Cómo funciona?" name=""/> -->
 		</div>
@@ -130,7 +130,9 @@ body{
 	<div class="col-sm-12" >
 		Nombre: <span id="info1"></span><br>
 		Dirección: <span id="info2"></span><br>
+		Recolección: <span id="infoRecoleccion"></span><br>
 		Teléfono: <span id="info3"></span><br>
+		Mail: <span id="infoMail"></span><br>
 		Comentarios: <span id="info6"></span>
 		Costo de envío: <span id="info4"></span><br>
 		Total: <span id="info5"></span>
@@ -206,7 +208,9 @@ function despliegaMenu(data){
 	orden=data["orden"]
 	$("#info1").text(data["nombre"]);
 	$("#info2").text(data["dicreccion"]);
+	$("#infoRecoleccion").text(data["recoleccion"]);
 	$("#info3").text(data["telefono"]);
+	$("#infoMail").text(data["mail"]);
 	$("#info4").text(data["costo_envio"]);
 	$("#info5").text(data["total"]);
 	$("#info6").text(data["comentarios"]);
