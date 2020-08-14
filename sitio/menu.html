@@ -722,7 +722,7 @@ function printCheckout(form_name,form_direccion,form_telefono,form_total,form_ma
 
 	for(key in _productos){
 		if(_productos[key][1]>0){
-			precioooo=parseFloat(_productos[key][1])*parseFloat(_productos[key][2])
+			precioooo=parseFloat(_productos[key][1].replace("$",""))*parseFloat(_productos[key][2])
 			$(".ordenHec").append('<tr><td>'
 				+_productos[key][0]
 				+'</td><td style="background-color:skyblue;">'
