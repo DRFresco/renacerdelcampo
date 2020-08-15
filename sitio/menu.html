@@ -240,7 +240,7 @@ body{
 		<div class="col-sm-6" >
 			<h1 ></h1>
 			<br>
-			<h5 style="color:black;"> Bienvenidx al mercado digital de El Renacer del Campo.</h5>
+			<span style="color:black;"> @elrenacerdelcampo es una Red Agroecológica que busca la seguridad alimentaria de familias campesinas de la Cuenca de Valle de Bravo-Amanalco y los vincula a Redes de Consumidores Responsables, que estén buscando una conexión más profunda con sus alimentos. Los esfuerzos están enfocados en las raíces e historias del producto, en los precios justos y en la regeneración del entendimiento del territorio -agua, suelo, bosques y habitantes.</span>
 			<h5 style="color:black;"> Contacto por Whatsapp: 722 108 2700</h5>
 			<br>
 			<!-- <input type="button" value="¿Cómo funciona?" name=""/> -->
@@ -249,10 +249,10 @@ body{
 			<img src="img/logo.png" class="logo">
 			<hr>
 		<audio controls>
-  <source src="rising-water.mp3" type="audio/mpeg">
+  <source src="cities.mp3" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio><br>
-Rising Water - James Vincent McMorrow
+Beck - cities
 <hr>
 			<span style="color:#49a954;">
 <br>
@@ -351,7 +351,7 @@ Rising Water - James Vincent McMorrow
 	<div class="regresar" onclick="regresar();">regresar al menú</div>
 	<br>
 	<div class="cuentaHec">
-		<h3>Información de envío</h3>
+		<h3>Información de pedido</h3>
 		<h4 style="color:black;font-family: monospace;font-size: 13px;" id="confirmainfo"></h4>
 		<h4>TOTAL:</h4>
 		<h4 style="color:red;" id="confirmatotal"></h4>
@@ -763,7 +763,7 @@ function ordenar(){
         dataType: 'json',
         success: function (data){
 			console.log("DATA",data);
-			$("#avisofinal").html('<p>Tu pedido ha sido procesado! Para confirmar tu orden te pedimos enviar tu comprobante de pago y tu número de orden por whatsapp al teléfono: 722 108 2700.</p> <p>Si deseas visualizar tu pedido, entra al siguiente link: <a href="/orden" target="_blank">ORDEN</a></p>');
+			$("#avisofinal").html('<p>Tu pedido ha sido procesado! Para recoger tu orden te pedimos llevar tu numero de orden al centro de acopio, cualquier duda contáctanos al WhatsApp: 722 108 2700.</p> <p>Si deseas visualizar tu pedido, entra al siguiente link: <a href="/orden" target="_blank">ORDEN</a></p>');
 			$("#numorden").text("Número de orden: "+data.orden);
 			$(".regresar").hide();
 			// $("#search1").html('<h1>numero de orden: '+data.orden+'</h1>')
