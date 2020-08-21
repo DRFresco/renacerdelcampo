@@ -185,6 +185,41 @@ exports.getOrdenes= function(callback){
       callback(csv)
 	});
 }
+exports.getResumen= function(callback){
+	
+	fs.readdir("ordenes", function (err, files) {
+	 productores={};
+	 admin={};
+	 csv="";
+	  if (err) {
+        console.error("Error stating file.", error);
+        return;
+      }
+      files.forEach(function (file, index) {
+      	
+      	if(!file.includes(".DS")){
+
+      		admin[file] = JSON.parse(fs.readFileSync('ordenes/'+file, 'utf8'));
+      		console.log(admin[file])
+      		orden=admin[file].orden;
+      		for (productoIndex in orden){
+      			name=orden[productoIndex][0].split("[|]");
+      			num=orden[productoIndex][1]
+      			precio=parseFloat( orden[productoIndex][2].replace("$","")  )
+      			if(!productores[name[1]]){
+      				productores[name[1]]={}
+      			}
+      			if(productores[name[1]][name[0]]){
+      				productores[name[1]][name[0]][0]+=num;
+      				productores[name[1]][name[0]][1]+=num*precio;
+      			}
+      			else{productores[name[1]][name[0]]=[num,num*precio];}
+      		}
+      	}
+      });
+      callback(productores);
+	});
+}
 exports.getOrdenesJson= function(callback){
 	orderdir="./ordenes";
 	if (!fs.existsSync(orderdir)){

@@ -25,11 +25,7 @@ table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
   bottom: .5em;
 }
-body{
-	background-color: black;
-	/*background: url("img/jitomate.jpg");*/
-	/*background-size: cover;*/
-}
+
 .head{
 	text-align: center;
 	font-family: monospace;
@@ -214,23 +210,23 @@ body{
     background-color: white;
 }
 </style>
-
+<link rel="stylesheet" href="css/orion.css">
 <body>
 	<br>
 <div class="container head" >
 	<div class="row">
-		<div class="col-sm-6" >
+		<div class="col-sm-6" style="background-color:#8d97bd !important;>
 			<h1 ></h1>
 			<br>
 			<h5 style="color:black;"> Administrador de órdenes</h5>
 			<h5 style="color:black;"> </h5>
 			<br>
-			<p>En esta sección se administran la ordenes que recibe el mercado desde el menú. Las órdenes se confirman al recibir el comprobante de pago. La acción de confirmarla crea la guía de entrega en forma de PDF. Una orden confirmada puede tambien "des-confirmarse"</p>
-			<p>Si deseas visualizar tu pedido, entra al siguiente link: <a href="/orden" target="_blank">Visor de órdenes</a></p>
+			<p style="color:black;">En esta sección se administran la ordenes que recibe el mercado desde el menú. Las órdenes se confirman al recibir el comprobante de pago. La acción de confirmarla crea la guía de entrega en forma de PDF. Una orden confirmada puede tambien "des-confirmarse"</p>
+			<p>Si deseas visualizar tu pedido, entra al siguiente link: <a href="http://www.ciudadsilvestre.mx/orden" target="_blank">www.ciudadsilvestre.mx/orden</a></p>
 			<!-- <input type="button" value="¿Cómo funciona?" name=""/> -->
 		</div>
 		<div class="col-sm-6">
-			<img src="img/orion.png" class="logo">
+			<div class="logo"></div><!-- <img src="img/logo.png" class="logo"> -->
 			<hr>
 			<input type="text" id="userF">
       <input type="password" id="passwordF">
@@ -243,6 +239,11 @@ body{
 
 	</span> -->
 		</div>
+		<div class="col-sm-4" >operaciones:<Br>
+			<div class="button_cont" align="center"><a class="button_c" href="#"  rel="nofollow noopener" onclick="getMatrizOrdenes()">Matríz de órdenes</a></div>
+			<div class="button_cont" align="center"><a class="button_c" href="#"  rel="nofollow noopener" onclick="getResumen()">Resumen por productor</a></div>
+		</div>
+		<div class="col-sm-8" >consola:<Br><textarea id="consola" class="form-control texta"></textarea></div>
 	</div>
 
 
@@ -303,7 +304,43 @@ $(document).ready(function(){
 function utf8_to_b64( str ) {
   return window.btoa(unescape(encodeURIComponent( str )));
 }
-
+function getMatrizOrdenes(){
+	_P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
+	console.log(_P)
+    op={"permission":_P}
+	$.ajax({
+        url: '/orion/ordenes',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(op),
+        success: function (data){
+        	var matriz = data.replace(/\;/g, '\t');
+        	var matriz = matriz.replace(/<Br>/g, '\n');
+        	$("#consola").val(matriz)
+		    console.log(matriz)
+			    
+			   
+	    }
+	});
+}
+function getResumen(){
+	_P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
+    op={"permission":_P}
+	$.ajax({
+        url: '/orion/resumen',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(op),
+        success: function (data){
+        	//obj=JSON.parse(data)
+        	//console.log(obj)
+        	$("#consola").val(data)
+		    
+			    
+			   
+	    }
+	});
+}
 function getOrdenes(){
 	_P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
     op={"permission":_P}

@@ -19,7 +19,7 @@ const readline = require('readline');
 //         Julia Orion Smith
 
 const port = 3001; 
-const _K = "bWFyaWF8fHJlbmFjZXI="; 
+const _K = "cmVuYWNlcnx8bWFyaWE="; 
 
 
 app.use(bodyParser.json())
@@ -64,12 +64,12 @@ app.post('/ordenview', function (req, res) {
   		res.json(orden);
   });
 });
-app.get('/ordenes', function (req, res) {
-  menuManager.getOrdenes(function(ordenes){
-  		res.send(ordenes);
-		console.log("corte de caja...");
-  });
-});
+// app.get('/ordenes', function (req, res) {
+//   menuManager.getOrdenes(function(ordenes){
+//   		res.send(ordenes);
+// 		console.log("corte de caja...");
+//   });
+// });
 app.get('/ordenaOrdenes', function (req, res) {
 
   menuManager.ordenaOrdenes(function(ordenes){
@@ -222,6 +222,34 @@ app.post('/orion/backunconfirm', function (req, res) {
 	    // if no error, file has been deleted successfully
 	     res.sendStatus(200)
 	}); 
+});
+app.post('/orion/backOrdenes', function (req, res) {
+	menuManager.getOrdenesJson(function(ordenes){
+  		res.send(ordenes);
+  	});
+
+});
+app.post('/orion/ordenes', function (req, res) {
+  menuManager.getOrdenes(function(ordenes){
+  		res.send(ordenes);
+		console.log("corte de caja...");
+  });
+});
+app.post('/orion/resumen', function (req, res) {
+
+  menuManager.getResumen(function(ordenes){
+  		csvsend="Productor\t Producto\t total de unidades ordenadas\t total \n";
+  		for (productor in ordenes){
+  			for(producto in ordenes[productor]){
+  				csvsend+=productor+"\t"+producto+
+  				"\t"+ordenes[productor][producto][0]
+  				+"\t"+ordenes[productor][producto][1]
+  				+"\n";
+  			}
+  		}
+  		res.send(csvsend);
+		console.log("productores...");
+  });
 });
 app.post('/orion/backOrdenes', function (req, res) {
 	menuManager.getOrdenesJson(function(ordenes){
