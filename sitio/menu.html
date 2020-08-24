@@ -231,6 +231,15 @@ body{
   border: 2px solid #000;
   padding: 25px;
 }
+#numorden{
+	font-size: 20pt;
+	font-family: monospace;
+	border:1px solid black;
+	text-align: center;
+}
+#avisofinal{
+	display: none;
+}
 </style>
 
 <body>
@@ -317,7 +326,7 @@ Beck - cities
 			<div class="row">
 				<div class="col-sm-12">
 					<input type="radio" name="zona" id="zona1" value="50" rec="milpa"> Recolección en la milpa: $50<br>
-					<input checked="checked" type="radio" name="zona" id="zona1" value="50" rec="canica"> recolección en la Canica: $50<br>
+					<input checked="checked" type="radio" name="zona" id="zona1" value="50" rec="Sempertuya"> recolección en Sempertuya: $50<br>
 					<input type="radio" name="zona" id="zona2" value="50" rec="verde venus"> recolección en Verde Venus: $50<br>
 					
 				</div>	
@@ -351,14 +360,12 @@ Beck - cities
 
 	<div class="regresar" onclick="regresar();">regresar al menú</div>
 	<br>
-	<div class="cuentaHec">
+	<div class="cuentaHec" >
 		<h3>Información de pedido</h3>
 		<h4 style="color:black;font-family: monospace;font-size: 13px;" id="confirmainfo"></h4>
 		<h4>TOTAL:</h4>
 		<h4 style="color:red;" id="confirmatotal"></h4>
-	</div>
-	
-	<hr>
+		<hr>
 	<p>Si quieres revisar nuevamente tu pedido, puedes utilizar el botón de “regresa al menú” y usar el botón de vizualisar pedido. </p>
 	<hr>
 
@@ -375,13 +382,18 @@ Beck - cities
 			<td>total</td>
 		</tr>
 	</table>
+	</div>
+	
+	
     
 <hr>
    
 
 
-<div id="avisofinal"></div>
-<h1 id="numorden"></h1>
+<div id="avisofinal"><p>Tu pedido ha sido procesado! Para recoger tu orden te pedimos llevar tu numero de orden al centro de acopio, cualquier duda contáctanos al WhatsApp: 722 108 2700.</p> <p>Si deseas visualizar tu pedido posteriormente, copia tu numero de orden e ingresalo en el siguiente link: <a href="/orden" target="_blank">ORDEN</a></p>
+	<h1 >Número de orden:</h1><div id="numorden" class="" ></div>
+</div>
+
 <br>
 <hr>
 <div class="ordenar" onclick="ordenar();">COMPLETAR ORDEN</div>
@@ -764,8 +776,9 @@ function ordenar(){
         dataType: 'json',
         success: function (data){
 			console.log("DATA",data);
-			$("#avisofinal").html('<p>Tu pedido ha sido procesado! Para recoger tu orden te pedimos llevar tu numero de orden al centro de acopio, cualquier duda contáctanos al WhatsApp: 722 108 2700.</p> <p>Si deseas visualizar tu pedido, entra al siguiente link: <a href="/orden" target="_blank">ORDEN</a></p>');
-			$("#numorden").text("Número de orden: "+data.orden);
+			$("#avisofinal").show();
+			$(".cuentaHec").hide();
+			$("#numorden").html(data.orden);
 			$(".regresar").hide();
 			// $("#search1").html('<h1>numero de orden: '+data.orden+'</h1>')
 			// $("#search2").html('')
