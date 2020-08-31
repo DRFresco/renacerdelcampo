@@ -204,7 +204,7 @@ exports.getResumen= function(callback){
       		orden=admin[file].orden;
       		for (productoIndex in orden){
       			name=orden[productoIndex][0].split("[|]");
-      			num=orden[productoIndex][1]
+      			num=parseFloat(orden[productoIndex][1]);
       			precio=parseFloat( orden[productoIndex][2].replace("$","")  )
       			if(!productores[name[1]]){
       				productores[name[1]]={}
