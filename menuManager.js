@@ -55,7 +55,7 @@ exports.menu=function (callback){
 	rownum=0;
 	proovedor="";
 	csv
-	 .parseFile(IN_file,{ delimiter:','})  //BUG BIZARRO !!!
+	 .parseFile(IN_file,{ delimiter:';'})  //BUG BIZARRO !!!
 	 .on("data", function(data){
 	 	rownum+=1;
 	 	data.push(rownum);
