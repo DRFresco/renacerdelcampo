@@ -185,6 +185,40 @@ exports.getOrdenes= function(callback){
       callback(csv)
 	});
 }
+exports.getResumenZonas= function(callback){
+	fs.readdir("ordenes", function (err, files) {
+	 zonas={};
+	 admin={};
+	 csv="";
+	  if (err) {
+        console.error("Error stating file.", error);
+        return;
+      }
+      files.forEach(function (file, index) {
+      	
+      	if(!file.includes(".DS")){
+
+      		admin[file] = JSON.parse(fs.readFileSync('ordenes/'+file, 'utf8'));
+      		console.log(admin[file])
+      		orden=admin[file].orden;
+      		zona=admin[file].recoleccion;
+      		if(!zonas[zona]){zonas[zona]={};}
+      		for (productoIndex in orden){
+
+      			name=orden[productoIndex][0].split("[|]");
+      			num=parseFloat(orden[productoIndex][1]);
+      			precio=parseFloat( orden[productoIndex][2].replace("$","")  )
+      			if(!zonas[zona][name[0]] && num!=0){zonas[zona][name[0]]=[0,0];}
+      			if (num!=0) {
+      				zonas[zona][name[0]][0]+=num;
+      				zonas[zona][name[0]][1]+=precio;
+      			}
+      		}
+      	}
+      });
+      callback(zonas);
+	});
+}
 exports.getResumen= function(callback){
 	
 	fs.readdir("ordenes", function (err, files) {

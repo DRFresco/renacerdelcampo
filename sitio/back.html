@@ -242,6 +242,7 @@ table.dataTable thead .sorting_desc_disabled:before {
 		<div class="col-sm-4" >operaciones:<Br>
 			<div class="button_cont" align="center"><a class="button_c" href="#"  rel="nofollow noopener" onclick="getMatrizOrdenes()">Matríz de órdenes</a></div>
 			<div class="button_cont" align="center"><a class="button_c" href="#"  rel="nofollow noopener" onclick="getResumen()">Resumen por productor</a></div>
+			<div class="button_cont" align="center"><a class="button_c" href="#"  rel="nofollow noopener" onclick="getResumenZonas()">Resumen por zona</a></div>
 		</div>
 		<div class="col-sm-8" >consola:<Br><textarea id="consola" class="form-control texta"></textarea></div>
 	</div>
@@ -328,6 +329,24 @@ function getResumen(){
     op={"permission":_P}
 	$.ajax({
         url: '/orion/resumen',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(op),
+        success: function (data){
+        	//obj=JSON.parse(data)
+        	//console.log(obj)
+        	$("#consola").val(data)
+		    
+			    
+			   
+	    }
+	});
+}
+function getResumenZonas(){
+	_P=utf8_to_b64($("#passwordF").val()+"||"+ $("#userF").val());
+    op={"permission":_P}
+	$.ajax({
+        url: '/orion/resumenzonas',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(op),

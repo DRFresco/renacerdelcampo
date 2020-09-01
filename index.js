@@ -251,6 +251,22 @@ app.post('/orion/resumen', function (req, res) {
 		console.log("productores...");
   });
 });
+app.post('/orion/resumenzonas', function (req, res) {
+
+  menuManager.getResumenZonas(function(zonas){
+  		csvsend="Zona\t Producto\t total de unidades ordenadas\t total $ \n";
+  		for (zona in zonas){
+  			for(producto in zonas[zona]){
+  				csvsend+=zona+"\t"+producto+
+  				"\t"+zonas[zona][producto][0]+
+  				"\t"+zonas[zona][producto][1]
+  				+"\n";
+  			}
+  		}
+  		res.send(csvsend);
+		console.log("Zonas...");
+  });
+});
 app.post('/orion/backOrdenes', function (req, res) {
 	menuManager.getOrdenesJson(function(ordenes){
   		res.send(ordenes);
