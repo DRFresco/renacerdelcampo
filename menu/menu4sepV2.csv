@@ -1,0 +1,124 @@
+Productos;Unidad;Precio Productores;Existencia Inicial;Categoría;Productor;Ubicación;Precio Comercial;Margen
+tamales de frijol en hoja de maiz;paquete de 4 pz;$25.00;20;;Ángela;;$28.75;$3.75
+tortillas;docena;$15.00;40;;Ángela;;$17.25;$2.25
+brócoli;pieza;$15.00;6;;Cristina;;$17.25;$2.25
+chile manzano;100 gramos;$6.00;20;;Cristina;;$6.90;$0.90
+cilantro;manojo;$10.00;10;;Cristina;;$11.50;$1.50
+elote;pieza;$8.00;40;;Cristina;;$9.20;$1.20
+haba verde;kilo (min 1/2);$30.00;2;;Cristina;;$34.50;$4.50
+lechuga;pieza;$10.00;5;;Cristina;;$11.50;$1.50
+manzana;kilo (min 1/2);$40.00;6;;Cristina;;$46.00;$6.00
+menta;manojo;$10.00;8;;Cristina;;$11.50;$1.50
+acelga;manojo;$10.00;10;;Cruz;;$11.50;$1.50
+betabel;manojo;$10.00;3;;Cruz;;$11.50;$1.50
+calabaza;kilo (min 1/2);$30.00;3;;Cruz;;$34.50;$4.50
+chilacayote;kilo (min 1/2);$30.00;4;;Cruz;;$34.50;$4.50
+chile manzano;100 gramos;$6.00;20;;Cruz;;$6.90;$0.90
+conejo;pieza;$250.00;1;;Cruz;;$287.50;$37.50
+espinaca;manojo;$10.00;3;;Cruz;;$11.50;$1.50
+haba verde;kilo (min 1/2);$30.00;5;;Cruz;;$34.50;$4.50
+hierbabuena;manojo;$10.00;5;;Cruz;;$11.50;$1.50
+kale;manojo;$10.00;3;;Cruz;;$11.50;$1.50
+manzana;kilo (min 1/2);$40.00;6;;Cruz;;$46.00;$6.00
+nopales;pieza;$2.50;30;;Cruz;;$2.88;$0.38
+nuez;ciento;$120.00;2;;Cruz;;$138.00;$18.00
+quelites;manojo;$10.00;5;;Cruz;;$11.50;$1.50
+aguacate;kilo (min 1/2);$55.00;20;;Erika;;$63.25;$8.25
+berros;manojo;$10.00;10;;Erika;;$11.50;$1.50
+limon;kilo (min 1/2);$30.00;10;;Erika;;$34.50;$4.50
+pera ;kilo (min 1/2);$35.00;10;;Erika;;$40.25;$5.25
+árnica;manojo;$10.00;10;;Rancho Gola;;$11.50;$1.50
+chile jalapeño;100 gramos;$6.00;6;;Rancho Gola;;$6.90;$0.90
+chile serrano;100 gramos;$6.00;0;;Rancho Gola;;$6.90;$0.90
+crema;medio litro;$75.00;10;;Rancho Gola;;$86.25;$11.25
+ejote morado;kilo (min 1/2);$40.00;;;Rancho Gola;;$46.00;$6.00
+galletas de amaranto;bolsita;$10.00;20;;Rancho Gola;;$11.50;$1.50
+galletas de avena;bolsita;$10.00;20;;Rancho Gola;;$11.50;$1.50
+higos cristalizados;domo;$50.00;20;;Rancho Gola;;$57.50;$7.50
+jitomate bola;kilo;$25.00;4;;Rancho Gola;;$28.75;$3.75
+jitomate cherry mix;kilo (min 1/2);$60.00;40;;Rancho Gola;;$69.00;$9.00
+jitomate heirloom mix;kilo (min 1/2);$60.00;8;;Rancho Gola;;$69.00;$9.00
+jitomate saladette;kilo (min 1/2);$20.00;100;;Rancho Gola;;$23.00;$3.00
+limón;kilo (min 1/2);$30.00;10;;Rancho Gola;;$34.50;$4.50
+mermelada de durazno;frasco;$40.00;10;;Rancho Gola;;$46.00;$6.00
+mermelada de zarza silvestre;frasco;$40.00;15;;Rancho Gola;;$46.00;$6.00
+mizuna;manojo;$10.00;0;;Rancho Gola;;$11.50;$1.50
+pan de caja (masa madre);pieza;$60.00;20;;Rancho Gola;;$69.00;$9.00
+pan de canela (masa madre);pieza;$60.00;20;;Rancho Gola;;$69.00;$9.00
+pan integral dulce (masa madre);pieza;$60.00;20;;Rancho Gola;;$69.00;$9.00
+pan relleno higo (masa madre);pieza;$60.00;20;;Rancho Gola;;$69.00;$9.00
+pan relleno zarza (masa madre);pieza;$60.00;20;;Rancho Gola;;$69.00;$9.00
+panqué de requesón;pieza;$60.00;10;;Rancho Gola;;$69.00;$9.00
+pay de requesón;pieza;$85.00;20;;Rancho Gola;;$97.75;$12.75
+pimiento heriloom mix;kilo (min 1/2);$50.00;30;;Rancho Gola;;$57.50;$7.50
+pimiento mini bell;100 gramos;$8.00;6;;Rancho Gola;;$9.20;$1.20
+pimiento morrón;kilo (min 1/2);$50.00;20;;Rancho Gola;;$57.50;$7.50
+queso asadero;pieza;$90.00;50;;Rancho Gola;;$103.50;$13.50
+quintonil;manojo;$10.00;10;;Rancho Gola;;$11.50;$1.50
+rábano rojo;manojo;$10.00;5;;Rancho Gola;;$11.50;$1.50
+rábano sandía;manojo;$10.00;8;;Rancho Gola;;$11.50;$1.50
+requesón;kilo (min 1/2);$90.00;15;;Rancho Gola;;$103.50;$13.50
+yoghurt;litro;$40.00;30;;Rancho Gola;;$46.00;$6.00
+zanahoria;kilo (min 1/2);$30.00;5;;Rancho Gola;;$34.50;$4.50
+acelga;manojo;$10.00;50;;Jesús y Joaquina;;$11.50;$1.50
+algafita;manojo;$10.00;50;;Jesús y Joaquina;;$11.50;$1.50
+apio;manojo;$10.00;15;;Jesús y Joaquina;;$11.50;$1.50
+betabel;manojo;$10.00;20;;Jesús y Joaquina;;$11.50;$1.50
+calabaza;kilo (min 1/2);$30.00;20;;Jesús y Joaquina;;$34.50;$4.50
+cebolla morada;kilo (min 1/2);$60.00;20;;Jesús y Joaquina;;$69.00;$9.00
+cilantro;manojo;$10.00;50;;Jesús y Joaquina;;$11.50;$1.50
+col morada;pieza;$15.00;30;;Jesús y Joaquina;;$17.25;$2.25
+col verde;pieza;$15.00;30;;Jesús y Joaquina;;$17.25;$2.25
+coliflor;pieza;$15.00;25;;Jesús y Joaquina;;$17.25;$2.25
+colinabo;pieza;$10.00;30;;Jesús y Joaquina;;$11.50;$1.50
+flor de calabaza;manojo;$10.00;30;;Jesús y Joaquina;;$11.50;$1.50
+haba seca;kilo;$80.00;20;;Jesús y Joaquina;;$92.00;$12.00
+hierbabuena;manojo;$10.00;10;;Jesús y Joaquina;;$11.50;$1.50
+hinojo;manojo;$10.00;10;;Jesús y Joaquina;;$11.50;$1.50
+kale mix;manojo;$10.00;15;;Jesús y Joaquina;;$11.50;$1.50
+lechuga;pieza;$10.00;50;;Jesús y Joaquina;;$11.50;$1.50
+manzana;kilo (min 1/2);$40.00;5;;Jesús y Joaquina;;$46.00;$6.00
+membrillo;kilo (min 1/2);$40.00;15;;Jesús y Joaquina;;$46.00;$6.00
+nopales;pieza;$2.50;300;;Jesús y Joaquina;;$2.88;$0.38
+ortiga;manojo;$10.00;20;;Jesús y Joaquina;;$11.50;$1.50
+quelites suale;manojo;$10.00;20;;Jesús y Joaquina;;$11.50;$1.50
+quintonil;manojo;$10.00;20;;Jesús y Joaquina;;$11.50;$1.50
+romero;manojo;$10.00;10;;Jesús y Joaquina;;$11.50;$1.50
+té de monte;manojo;$10.00;10;;Jesús y Joaquina;;$11.50;$1.50
+toronjil;manojo;$10.00;10;;Jesús y Joaquina;;$11.50;$1.50
+verdolaga;manojo;$10.00;10;;Jesús y Joaquina;;$11.50;$1.50
+huevo;pieza;$3.50;425;;Jorge;;$4.03;$0.53
+galletas keto chocochip;bolsa;$154.00;10;;Marce;;$177.10;$23.10
+granola;bolsa;$192.00;10;;Marce;;$220.80;$28.80
+panketo a la italiana c;pieza;$215.00;10;;Marce;;$247.25;$32.25
+panketo multigrano;pieza;$215.01;10;;Marce;;$247.26;$32.25
+panketo cacao con nuez;pieza;$215.02;10;;Marce;;$247.27;$32.25
+panketo crema de cachuate;pieza;$215.03;10;;Marce;;$247.28;$32.25
+panketo nuez;pieza;$215.04;10;;Marce;;$247.30;$32.26
+panketo naranja;pieza;$215.05;10;;Marce;;$247.31;$32.26
+panketo vainilla;pieza;$215.06;10;;Marce;;$247.32;$32.26
+acelga;manojo;$10.00;10;;Rosa;;$11.50;$1.50
+apio rosa;manojo;$10.00;6;;Rosa;;$11.50;$1.50
+arúgula;manojo;$10.00;8;;Rosa;;$11.50;$1.50
+betabel;manojo;$10.00;2;;Rosa;;$11.50;$1.50
+brócoli;pieza;$15.00;8;;Rosa;;$17.25;$2.25
+calabaza;kilo (min 1/2);$30.00;2;;Rosa;;$34.50;$4.50
+chilacayote;kilo (min 1/2);$30.00;1;;Rosa;;$34.50;$4.50
+cilantro;manojo;$10.00;4;;Rosa;;$11.50;$1.50
+espinaca;manojo;$10.00;4;;Rosa;;$11.50;$1.50
+haba verde;kilo (min 1/2);$30.00;5;;Rosa;;$34.50;$4.50
+huevos;pieza;$3.50;75;;Rosa;;$4.03;$0.53
+jitomate cherry mix;kilo (min 1/2);$60.00;2;;Rosa;;$69.00;$9.00
+kale;manojo;$10.00;4;;Rosa;;$11.50;$1.50
+lechuga;pieza;$10.00;14;;Rosa;;$11.50;$1.50
+nopales;pieza;$2.50;30;;Rosa;;$2.88;$0.38
+nueces;cientos;$100.00;4;;Rosa;;$115.00;$15.00
+pera ;kilo (min 1/2);$35.00;30;;Rosa;;$40.25;$5.25
+perejil;manojo;$10.00;7;;Rosa;;$11.50;$1.50
+poro;pieza;$10.00;2;;Rosa;;$11.50;$1.50
+avena (500g);bolsa;$19.00;30;;Verde Venus;;$21.85;$2.85
+frijol ayocote (1k);bolsa;$52.00;10;;Verde Venus;;$59.80;$7.80
+frijol negro (1k);bolsa;$47.00;15;;Verde Venus;;$54.05;$7.05
+garbanzo (500g);bolsa;$30.00;15;;Verde Venus;;$34.50;$4.50
+lenteja (1k);bolsa;$55.00;15;;Verde Venus;;$63.25;$8.25
+lavaplatos biodegradable;pieza;$50.00;4;;Verde Venus;;$57.50;$7.50

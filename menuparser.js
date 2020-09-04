@@ -13,11 +13,12 @@ var csv = require("fast-csv");
 exports.disperser="disperser"
 
 exports.compilaMenu= function(menu,callback){
+	console.log("menu parseString")
 	disperser=menu;
 	MOBJ={};
 	count=0;
-	menustring="Producto,Unidad;Precio,existencia,Categoría,Productor,Ubicación,Precio consumidor,Margen\n";
-	csv.parseString(menu, { delimiter:',' })
+	menustring="Producto;Unidad;Precio;existencia;Categoría;Productor;Ubicación;Precio consumidor;Margen\n";
+	csv.parseString(menu, { delimiter:';' })
     .on('error', error => console.error(error))
     .on('data', function(row){
     	if(count==0){count+=1;}
@@ -32,9 +33,10 @@ exports.compilaMenu= function(menu,callback){
 			id=count;
 			if(!MOBJ[producto]){ 
 				MOBJ[producto]=[producto,unidad,precioP,existencia,"",productor,"",precioC,id];
-			
+				
 			}
 			else{
+				console.log(producto, "new",MOBJ[producto][5])
 				MOBJ[producto][3]+=existencia;
 				MOBJ[producto][5]+=" - "+productor;
 				console.log("----"+row)
@@ -46,7 +48,7 @@ exports.compilaMenu= function(menu,callback){
     })
     .on('end', function(rowCount){
     	for(producto in MOBJ){
-    		menustring+=MOBJ[producto].join(",")+"\n";
+    		menustring+=MOBJ[producto].join(";")+"\n";
 
     	}
     	console.log(menustring)
