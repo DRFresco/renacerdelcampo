@@ -167,14 +167,16 @@ exports.getConfirmed= function(callback){
 	      		files.forEach(function (file) {
 	      			confirmedFile=file.replace(".pdf","");
 	      			if(!confirmedFile.includes(".DS")){
-
-			      		admin[file] = JSON.parse(fs.readFileSync('ordenes/'+confirmedFile, 'utf8'));
-			      		if (header==""){
-			      			header=getHeader(admin[file])+"<Br>";
-			      			csv+=header;
-			      		}
-			      		//fs.readFile("ordenes/"+file, handleFile);
-			      		csv+=handleOrder(file,admin[file])+"<Br>";
+	      				if (fs.existsSync('ordenes/'+confirmedFile)) {
+				    		admin[file] = JSON.parse(fs.readFileSync('ordenes/'+confirmedFile, 'utf8'));
+				      		if (header==""){
+				      			header=getHeader(admin[file])+"<Br>";
+				      			csv+=header;
+				      		}
+				      		//fs.readFile("ordenes/"+file, handleFile);
+				      		csv+=handleOrder(file,admin[file])+"<Br>";
+				  		}
+			      		
 			      	}
 			    });
 	    		
