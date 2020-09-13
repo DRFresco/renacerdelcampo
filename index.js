@@ -230,22 +230,60 @@ app.post('/orion/backOrdenes', function (req, res) {
 
 });
 app.post('/orion/ordenes', function (req, res) {
-  menuManager.getOrdenes(function(ordenes){
+  menuManager.getConfirmed(function(ordenes){
   		res.send(ordenes);
 		console.log("corte de caja...");
   });
 });
+function divideProductos(productores,cantidad,precio){
+	splitter=productores.split("-");
+	res={};
+	preciounitario=precio/cantidad;
+	sum=0;
+	for(i=0;i<splitter.length;i++){
+	  	nameproductor=splitter[i].trim();
+	  	if(i==splitter.length-1){
+	  		res[nameproductor]=[cantidad-sum,(cantidad-sum)*preciounitario];
+	  	}
+	  	else{
+	  		sum+=Math.floor(cantidad/splitter.length);
+	  		//console.log(sum,cantidad,"-")
+	  		res[nameproductor]=[Math.floor(cantidad/splitter.length) , 
+	  		Math.floor(cantidad/splitter.length)*preciounitario];
+
+	  	}
+	  					
+	}	
+	
+	return res;
+
+}
 app.post('/orion/resumen', function (req, res) {
 
   menuManager.getResumen(function(ordenes){
   		csvsend="Productor\t Producto\t total de unidades ordenadas\t total \n";
   		for (productor in ordenes){
-  			for(producto in ordenes[productor]){
-  				csvsend+=productor+"\t"+producto+
-  				"\t"+ordenes[productor][producto][0]
-  				+"\t"+ordenes[productor][producto][1]
-  				+"\n";
+  			splitter=productor.split("-");
+  			if(splitter.length>1){
+  				for(producto in ordenes[productor]){
+  					resultado=divideProductos(productor,ordenes[productor][producto][0],ordenes[productor][producto][1])
+  					for(newp in resultado){
+  						ordenes[newp][producto]=resultado[newp];
+  						//console.log(producto)
+  					}
+  					//console.log(producto,ordenes[productor][producto][0],resultado)
+  				}
+  				
   			}
+  			else{
+  				for(producto in ordenes[productor]){
+	  				csvsend+=productor+"\t"+producto+
+	  				"\t"+ordenes[productor][producto][0]
+	  				+"\t"+ordenes[productor][producto][1]
+	  				+"\n";
+	  			}
+  			}
+  			
   		}
   		res.send(csvsend);
 		console.log("productores...");
