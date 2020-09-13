@@ -157,6 +157,32 @@ exports.ordenaOrdenes= function(callback){
 
 	
 }
+exports.getConfirmed= function(callback){
+	bandeja={};
+	admin={};
+	header="";
+	csv="";
+	fs.readdir("./bandeja", function (err, files) {
+	      		bandeja={};
+	      		files.forEach(function (file) {
+	      			confirmedFile=file.replace(".pdf","");
+	      			if(!confirmedFile.includes(".DS")){
+
+			      		admin[file] = JSON.parse(fs.readFileSync('ordenes/'+confirmedFile, 'utf8'));
+			      		if (header==""){
+			      			header=getHeader(admin[file])+"<Br>";
+			      			csv+=header;
+			      		}
+			      		//fs.readFile("ordenes/"+file, handleFile);
+			      		csv+=handleOrder(file,admin[file])+"<Br>";
+			      	}
+			    });
+	    		
+
+	     callback(csv)
+
+	});
+}
 exports.getOrdenes= function(callback){
 	
 	fs.readdir("ordenes", function (err, files) {
@@ -232,22 +258,27 @@ exports.getResumen= function(callback){
       files.forEach(function (file, index) {
       	
       	if(!file.includes(".DS")){
-
+      		RULETA={};
       		admin[file] = JSON.parse(fs.readFileSync('ordenes/'+file, 'utf8'));
-      		console.log(admin[file])
+      		//console.log(admin[file])
       		orden=admin[file].orden;
       		for (productoIndex in orden){
       			name=orden[productoIndex][0].split("[|]");
       			num=parseFloat(orden[productoIndex][1]);
       			precio=parseFloat( orden[productoIndex][2].replace("$","")  )
-      			if(!productores[name[1]]){
+      			productosJunto=name[1].split("-");
+      			
+      				if(!productores[name[1]]){
       				productores[name[1]]={}
-      			}
-      			if(productores[name[1]][name[0]]){
-      				productores[name[1]][name[0]][0]+=num;
-      				productores[name[1]][name[0]][1]+=num*precio;
-      			}
-      			else{productores[name[1]][name[0]]=[num,num*precio];}
+	      			}
+	      			if(productores[name[1]][name[0]]){
+	      				productores[name[1]][name[0]][0]+=num;
+	      				productores[name[1]][name[0]][1]+=num*precio;
+	      			}
+	      			else{productores[name[1]][name[0]]=[num,num*precio];}
+
+
+      			
       		}
       	}
       });
@@ -410,7 +441,7 @@ function handleOrder(file,singularOrder){
 	singularOrder["nombre"]+";"+
 	singularOrder["total"]+";"+
 	singularOrder["telefono"]+";"+
-	singularOrder["dicreccion"]+";"+
+	singularOrder["recoleccion"]+";"+
 	singularOrder["comentarios"]+";"+
 	singularOrder["costo_envio"]+";;";
 	for(key in singularOrder["orden"]){
