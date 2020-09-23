@@ -399,29 +399,53 @@ exports.closeOp=function (callback) {	//CERRAR OPERACIÓN
 exports.uploadmenu= function(newmenu,callback){
 	this.liveMenu={}; 
 	fs.unlink("./menu/workingcopy/menu.json", function (err) {
-			menuparser.compilaMenu(newmenu,function(menucompilado){
-				console.log(menucompilado);
-				fs.writeFile('./menu/mainmenu.csv', menucompilado, function (err) {
-				  if (err){
-				  	callback({"status":"err","err":err})
-				  } 
-				  else{
-				  	fs.mkdir("./ordenes", (err) => { 
+			   
+	});
+
+	fs.writeFile('./menu/mainmenu.csv', newmenu, function (err) {
+	  if (err){
+	  	callback({"status":"err","err":err})
+	  } 
+	  else{
+	  	fs.mkdir("./ordenes", (err) => { 
+
+	  		
+
+		    if (err) { 
+		         callback({"status":"err","err":err})
+		    } 
+		    else{
+		    	
+		    	callback({"status":"suave"})}
+		}); 
+
+	  }
+	});
+	// this.liveMenu={}; 
+	// fs.unlink("./menu/workingcopy/menu.json", function (err) {
+	// 		menuparser.compilaMenu(newmenu,function(menucompilado){
+	// 			console.log(menucompilado);
+	// 			fs.writeFile('./menu/mainmenu.csv', menucompilado, function (err) {
+	// 			  if (err){
+	// 			  	callback({"status":"err","err":err})
+	// 			  } 
+	// 			  else{
+	// 			  	fs.mkdir("./ordenes", (err) => { 
 
 				  		
 
-					    if (err) { 
-					         callback({"status":"err","err":err})
-					    } 
-					    else{
+	// 				    if (err) { 
+	// 				         callback({"status":"err","err":err})
+	// 				    } 
+	// 				    else{
 					    	
-					    	callback({"status":"suave"})}
-					}); 
+	// 				    	callback({"status":"suave"})}
+	// 				}); 
 
-				  }
-				});
-			});   
-	});
+	// 			  }
+	// 			});
+	// 		});   
+	// });
 	// PREPARAR EL MENU ANTES DE GUARDAR
 	
 	
