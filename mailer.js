@@ -12,7 +12,7 @@ var transporter = nodemailer.createTransport({
 	    service: 'gmail',
 	    auth: {
 	        user: 'elrenacerdelcampo@gmail.com',
-	        pass: 'redagro2019'
+	        pass: 'redagro2020'
 	    }
 	});
 
