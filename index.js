@@ -285,7 +285,7 @@ app.post('/orion/resumen', function (req, res) {
 	 		 	
 	 })	
 	 .on("end", function(){
-	 	//console.log(menuthis)
+	 	console.log(menuthis)
 	 	csvsend="Productor\t Producto\t total de unidades ordenadas\t total venta \t total precio productor \n";
   		for (productor in ordenes){
   			
