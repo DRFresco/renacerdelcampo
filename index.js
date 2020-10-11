@@ -261,32 +261,57 @@ function divideProductos(productores,cantidad,precio){
 app.post('/orion/resumen', function (req, res) {
 
   menuManager.getResumen(function(ordenes){
-  		csvsend="Productor\t Producto\t total de unidades ordenadas\t total \n";
+  	console.log(ordenes);
+  	IN_file="menu/mainmenu.csv";
+	rownum=0;
+	proovedor="";
+	menuthis={};
+	csv
+	 .parseFile(IN_file,{ delimiter:';'})  
+	 .on("data", function(data){
+	 	rownum+=1;
+	 	data.push(rownum);
+
+	 	if(rownum==1){}
+	 	else{
+	 		productos=data[0];
+	 		precioproductor=data[2];
+	 		precioC=data[7]
+	 		if(!menuthis[productos]){
+	 			menuthis[productos]=[precioproductor,precioC];
+	 		}
+	 		//menuthis[proovedor].push(data);
+	 	}
+	 		 	
+	 })	
+	 .on("end", function(){
+	 	//console.log(menuthis)
+	 	csvsend="Productor\t Producto\t total de unidades ordenadas\t total venta \t total precio productor \n";
   		for (productor in ordenes){
-  			splitter=productor.split("-");
-  			if(splitter.length>1){
+  			
+  			
+  			
   				for(producto in ordenes[productor]){
-  					resultado=divideProductos(productor,ordenes[productor][producto][0],ordenes[productor][producto][1])
-  					for(newp in resultado){
-  						ordenes[newp][producto]=resultado[newp];
-  						//console.log(producto)
-  					}
-  					//console.log(producto,ordenes[productor][producto][0],resultado)
-  				}
-  				
-  			}
-  			else{
-  				for(producto in ordenes[productor]){
+  					precios=menuthis[producto];
+  					console.log(precios)
+  					precioinicial=parseFloat(precios[0].replace("$",""));
+
+  					//precio a pagar
+  					ordenes[productor][producto][2]=ordenes[productor][producto][0]*precioinicial;
+  					console.log(ordenes[productor][producto][2])
 	  				csvsend+=productor+"\t"+producto+
 	  				"\t"+ordenes[productor][producto][0]
 	  				+"\t"+ordenes[productor][producto][1]
+	  				+"\t"+ordenes[productor][producto][2]
 	  				+"\n";
 	  			}
-  			}
+  			
   			
   		}
   		res.send(csvsend);
 		console.log("productores...");
+	 })
+  		
   });
 });
 app.post('/orion/resumenzonas', function (req, res) {
