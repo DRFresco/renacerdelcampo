@@ -56,7 +56,7 @@ table.dataTable thead .sorting_desc_disabled:before {
   padding: 20px;
   cursor: pointer;
   box-shadow: 3px 3px #5049a9;
-  
+
 }
 .carrito:hover{
 	background-color: white;
@@ -71,7 +71,7 @@ table.dataTable thead .sorting_desc_disabled:before {
   border: 2px solid dimgrey;
   padding: 20px;
   /*box-shadow: 3px 3px #5049a9;*/
-  
+
 }
 .rabi{
 	border-radius: 15px;
@@ -91,7 +91,7 @@ table.dataTable thead .sorting_desc_disabled:before {
   padding: 20px;
   cursor: pointer;
   box-shadow: 3px 3px #5049a9;
-  
+
 }
 .ordenar:hover{
 	background-color: white;
@@ -110,7 +110,7 @@ table.dataTable thead .sorting_desc_disabled:before {
   padding: 20px;
   cursor: pointer;
   box-shadow: 3px 3px #5049a9;
-  
+
 }
 .checkout:hover{
 	background-color: white;
@@ -128,7 +128,7 @@ table.dataTable thead .sorting_desc_disabled:before {
   padding: 20px;
   cursor: pointer;
   box-shadow: 3px 3px #5049a9;
-  
+
 }
 .regresar:hover{
 	background-color: white;
@@ -264,44 +264,46 @@ table.dataTable thead .sorting_desc_disabled:before {
 	      </th>
 	      <th class="th-sm">total
 	      </th>
+				<th class="th-sm">mail
+	      </th>
 	      <th class="th-sm">telefono
 	      </th>
 	      <th class="th-sm">info
 	      </th>
 	      <th class="th-sm">estado
 	      </th>
-	     
+
 	    </tr>
 	  	</thead>
 	  	<tbody id="tabla_productos">
 	    	<!-- <tr>
-		      
+
 		      <td>Cerveza lagger</td>
 		      <td>Mounstro de Agua</td>
 		      <td>$61</td>
 		      <td>input</td>
 		      <td>preciotot</td>
 		    </tr> -->
-		    
+
 		  </tbody>
 		  <tfoot>
-		    
+
 		  </tfoot>
-	</table>	
+	</table>
 </div> <!-- ROW -->
 <div class="row">
-		
+
 </div> <!-- ROW -->
 </div> <!-- table_container -->
 </body>
 
 <script type="text/javascript">
 $(document).ready(function(){
-	
+
 	//getOrdenes();
 
 
-});	
+});
 function utf8_to_b64( str ) {
   return window.btoa(unescape(encodeURIComponent( str )));
 }
@@ -319,8 +321,8 @@ function getMatrizOrdenes(){
         	var matriz = matriz.replace(/<Br>/g, '\n');
         	$("#consola").val(matriz)
 		    console.log(matriz)
-			    
-			   
+
+
 	    }
 	});
 }
@@ -336,9 +338,9 @@ function getResumen(){
         	//obj=JSON.parse(data)
         	//console.log(obj)
         	$("#consola").val(data)
-		    
-			    
-			   
+
+
+
 	    }
 	});
 }
@@ -354,9 +356,9 @@ function getResumenZonas(){
         	//obj=JSON.parse(data)
         	//console.log(obj)
         	$("#consola").val(data)
-		    
-			    
-			   
+
+
+
 	    }
 	});
 }
@@ -385,6 +387,7 @@ function getOrdenes(){
 				      <td></td><td>'+orden_st+'</td>\
 				      <td style="background-color:#ffffff;">'+orden_info.nombre+'</td>\
 				      <td>'+orden_info.total+'</td>\
+							<td>'+orden_info.mail+'</td>\
 				      <td>'+orden_info.telefono+'</td>\
 				      <td>'+"info"+'</td>\
 				      <td>'+status+'</td>\
@@ -396,7 +399,7 @@ function getOrdenes(){
 	    }
 	});
 	$("#tabla_productos").html("")
-	
+
 }
 
 function confirm(nombre){
