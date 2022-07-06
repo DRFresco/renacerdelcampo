@@ -1,6 +1,6 @@
 var nodemailer=require("nodemailer");
 var handlebars = require('handlebars');
-//          (_    ,_,    _) 
+//          (_    ,_,    _)
 //          / `'--) (--'` \
 //         /  _,-'\_/'-,_  \
 //        /.-'     "     '-.\
@@ -11,8 +11,8 @@ var fs = require('fs');
 var transporter = nodemailer.createTransport({
 	    service: 'gmail',
 	    auth: {
-	        user: 'elrenacerdelcampo@gmail.com',
-	        pass: 'redagro2020'
+	        user: 'renacerdelcampo@orionbelt.mx',
+	        pass: 'nC8YE<5p'
 	    }
 	});
 
@@ -46,7 +46,7 @@ readHTMLFile('sitio/mail.html', function(err, html) {
          nombre: orden.nombre,
          costo_envio:orden.costo_envio,
          pedido: pedido,
-         recoleccion:orden.recoleccion, 
+         recoleccion:orden.recoleccion,
          total:orden.total
     };
     var htmlToSend = template(replacements);
@@ -58,7 +58,7 @@ readHTMLFile('sitio/mail.html', function(err, html) {
         attachments: [{
 		     filename: 'logo.png',
 		     path: 'sitio/img/logo.png',
-		     cid: 'logo' //my mistake was putting "cid:logo@cid" here! 
+		     cid: 'logo' //my mistake was putting "cid:logo@cid" here!
 		}]
      };
     transporter.sendMail(mailOptions, function (error, response) {
@@ -83,7 +83,3 @@ var readHTMLFile = function(path, callback) {
         }
     });
 };
-
-
-
-
