@@ -8,15 +8,21 @@ var handlebars = require('handlebars');
 var fs = require('fs');
 
 
-var transporter = nodemailer.createTransport({
-	    service: 'gmail',
-	    auth: {
-	        user: 'gabriel@orionbelt.mx',
-	        pass: 'suckmykiss1175!'
-	    }
+// var transporter = nodemailer.createTransport({
+// 	    service: 'gmail',
+// 	    auth: {
+// 	        user: 'gabriel@orionbelt.mx',
+// 	        pass: ''
+// 	    }
+// 	});
+
+	let transporter = nodemailer.createTransport({
+	     service: 'SendPulse', // no need to set host or port etc.
+	     auth: {
+	         user: 'gabriel@orionbelt.mx',
+	         pass: 'YAtkWJAtDi7'
+	     }
 	});
-
-
 
 
 
